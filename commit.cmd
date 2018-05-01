@@ -1,3 +1,5 @@
+rem Get around to working on this eventually
+
 rem @echo off
 echo Starting to commit
 
