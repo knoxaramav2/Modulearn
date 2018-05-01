@@ -1,0 +1,37 @@
+/* Primary Components */
+body {
+    background: black;
+}
+
+h1, h2, h3 {
+    color: white;
+    text-align: center;
+}
+
+a{
+    color:white;
+}
+
+
+/* Common */
+#header{
+    width:100%;
+    border-bottom: 2px inset gray;
+    overflow: hidden;
+}
+
+#header a{
+    float:right;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+
+/* Component Themes */
+
+
+
+
+
+
+
+/* Responsive */

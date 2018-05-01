@@ -1,0 +1,16 @@
+<!-- Provides common imports, elements -->
+
+<head>
+
+    <link href="{{asset('css/site.css')}}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="header">
+        <span><a href="/login">Login In</a></span>
+        <span><a href="/topics">Topics</a></span>
+        <span><a href="/about">About</a></span>
+        <span><a href="/">Home</a></span>
+    </div>
+</body>
