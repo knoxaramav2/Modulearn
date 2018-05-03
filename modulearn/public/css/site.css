@@ -12,8 +12,87 @@ a{
     color:white;
 }
 
+/* Util */
+
+.spacer{
+    width:100%;
+    border-bottom: 1px solid gray;
+    margin: 35px 0 35px 0;
+
+    -webkit-border-image:-webkit-gradient(linear, left bottom, right bottom, color-stop(.1, #000), color-stop(.5, #FFF), color-stop(.9, #000)) 100;
+}
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:not(checked) + .slider{
+    background-color: red;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
+}
+
+.error{
+    color:red;
+    font-weight: bold;
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.slider::before{
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
 
 /* Common */
+.content{
+    width: 100%;
+    text-align: center;
+}
+
 #header{
     width:100%;
     border-bottom: 2px inset gray;
@@ -24,6 +103,54 @@ a{
     float:right;
     padding: 10px 10px;
     text-decoration: none;
+}
+
+/* Forms */
+.login{
+    width: 50%;
+    display:inline-block;
+    text-align:center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: darkcyan;
+    min-width: 190px;
+}
+
+.login form input:not([name=_token]){
+    margin-top:10px;
+    border:thin transparent solid;
+    padding: 8px;
+    border-radius: 9px;
+
+    color:white;
+    background-color: darkgrey;
+
+    width: 50%;
+    max-width: 350px;
+    min-width: 180px;
+}
+
+.login form label:not(.switch){
+    float: left;
+    font-weight: bold;
+    margin-top:10px;
+    padding-top: 9px;
+    width:100%;
+    text-align: center;
+}
+
+.login form input.form_submit{
+    width: 80%;
+}
+
+#password_toggle_container{
+    display:inline-flex;
+    margin: 8px;
+}
+
+#password_toggle_container label:not(.switch){
+    margin:0;
 }
 
 /* Component Themes */

@@ -11,6 +11,10 @@
 |
 */
 
+Route::resources([
+    'users' => 'UserController'
+]);
+
 Route::get('/', function () {
     return view('home');
 });
@@ -18,6 +22,9 @@ Route::get('/', function () {
 Route::get('/login', function(){
     return view('login');
 });
+
+Route::post('login', 'UserController@loginAs');
+Route::post('users', 'UserController@store');
 
 Route::get('/topics', function(){
     return view('topics');
