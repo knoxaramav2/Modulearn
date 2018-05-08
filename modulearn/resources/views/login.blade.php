@@ -10,7 +10,7 @@
     <body>
         @include('partial/header')
 
-        @if(isset($user))
+        @if(isset($username))
 
         <div class="content">
             <button>Logout</button>
@@ -19,11 +19,15 @@
         @else
 
         <div class="content">
-            @foreach($errors->all() as $error)
-                <div class='error'>
-                {{$error}}
-                </div>
-            @endforeach
+
+            @if(Session::has('err_sec') && strcmp(Session::get('err_sec'), 'err_login') == 0)
+                @array_shift($errors);
+                @foreach($errors->all() as $error)
+                    <div class='error'>
+                        {{$error}}
+                    </div>
+                @endforeach
+            @endif
 
             <div class="login">
                 <h3>Login</h3>
@@ -40,6 +44,15 @@
             </div>
 
             <div class="spacer"></div>
+
+            @if(Session::has('err_sec') && strcmp(Session::get('err_sec'), 'err_signup') == 0)
+                @array_shift($errors);
+                @foreach($errors->all() as $error)
+                    <div class='error'>
+                        {{$error}}
+                    </div>
+                @endforeach
+            @endif
 
             <div class="login">
                 <h3>Sign-Up</h3>

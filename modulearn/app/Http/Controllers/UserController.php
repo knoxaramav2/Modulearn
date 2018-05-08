@@ -23,21 +23,35 @@ class UserController extends Controller
 
         $validate_rules = array(
             'name' => "required|unique:users",
-            'password' => 'required|confirmed',
+            'password' => 'required',
             'email' => 'required|email|unique:users,email'
         );
 
-        return $request;
+        $messages = array(
+            'required' => 'Please fill in the :attribute field'
+        );
+
+        $validator = Validator::make(Input::all(), $validate_rules, $messages);
+
+        if ($validator->fails()){
+            Session::flash('err_sec','err_signup');
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        return redirect('/');
     }
 
     public function loginView(){
+        Log::info('login view');
+        Log::info(session()->all());
+
         return view('login');
     }
 
     public function loginAs(){
         Session::flush();
-
-        Log::info(database_path('database.sqlite'));
         
         $validate_rules = array(
             'name' => 'required',
@@ -51,7 +65,10 @@ class UserController extends Controller
         $validator = Validator::make(Input::all(), $validate_rules, $messages);
 
         if ($validator->fails()){
-            return Redirect::back()->withErrors($validator)->withInput();
+            Session::flash('err_sec','err_login');
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $user = User::where('name', '=', Input::get('name'))->first();
@@ -62,15 +79,22 @@ class UserController extends Controller
         }
         
         if (!Hash::check(Input::get('password'), $user->password)){
+            Session::flash('err_sec','err_login');
             $validator->getMessageBag()->add('Password', 'Invalid password');          
-            return Redirect::back()->withErrors($validator)->withInput();        
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();        
         }
 
-        Session::put('username', $user->name);
+        Session::put('user', $user);
 
-        return redirect()->intended('/');
-
-        return Redirect('/');
+        return redirect('/');
     }
 
+    public function logout(){
+
+        Session::flush();
+
+        return redirect('/');
+    }
 }
