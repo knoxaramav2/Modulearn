@@ -11,10 +11,7 @@
         @include('partial/header')
 
         <div class="content">
-            <h2>Welcome to Modulearn!</h2>
-            <p>
-                
-            </p>
+            <h1>Tutorial</h1>
         </div>
     </body>
 

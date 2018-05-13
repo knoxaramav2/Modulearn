@@ -12,7 +12,41 @@
         @include('partial/header')
 
         <div class="content">
-            <h1>Modulearn</h1>
+            <div id="search_by_topic">
+                <h2>Search by Topic</h2>
+                <div id="link_box">
+                    <?php $topics=array('Computer Science','Math','English', 'Electrical Engineering', 'Physics',
+                    'Biology', 'History', 'Religion', '') ?>
+                    @foreach($topics as $topic)
+                        <span><a href="/">{{$topic}}</a></span>
+                    @endforeach
+                </div>
+            </div>
+
+            <div id="getting_started">
+                <h2>Getting Started</h2>
+                <div class='spacer'></div>
+                <p>
+                    Modulearn is a platform for creating more than 
+                    just tutorials. It is a place for connecting ideas
+                    together to make learning easy and intuitive.
+                </p>
+                <p> 
+                    Users
+                    are also encouraged to use the platform to write
+                    projects they work on and their findings, to utilize
+                    this site as one large knowledge base.
+                </p>
+
+                <div>
+                    <div><button>Start Creating</button></div>
+                    <div><button>Explore</button></div>
+                </div>
+            </div>
+
+            <div id="popular_slider">
+                <h2>Popular Threads</h2>
+            </div>
         </div>
 
     </body>

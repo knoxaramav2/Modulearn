@@ -20,7 +20,6 @@ Route::resources([
 
 Route::get('/', function () {
     $user = Session::get('user');//User::where('name', '=', "Test User")->first();
-    Log::info("home:: " . $user);
     return View::make('home', ['user'=>$user]);
 });
 
@@ -32,6 +31,8 @@ Route::post('users', 'UserController@store');
 Route::get('logout', 'UserController@logout');
 Route::get('login', 'UserController@loginView');
 
+Route::get('account', 'UserController@accountView');
+
 //Topics
 Route::get('/topics', function(){
     return view('topics');
@@ -40,3 +41,6 @@ Route::get('/topics', function(){
 Route::get('/about', function(){
     return view('about');
 });
+
+//Errors
+Route::get('/error/{msg}', 'ErrorController@errorView');

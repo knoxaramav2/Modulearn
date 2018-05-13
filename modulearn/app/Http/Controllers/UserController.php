@@ -97,4 +97,15 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
+    public function accountView(){
+
+        $user = Session::get('user');
+
+        if(!isset($user)){
+            return redirect('error/No active user session');
+        }
+
+        return view('account', ['user'=>$user]);
+    }
 }

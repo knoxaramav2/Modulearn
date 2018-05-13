@@ -1,6 +1,6 @@
 /* Primary Components */
 body {
-    background: black;
+    background: #c5c386;
 }
 
 h1, h2, h3 {
@@ -19,7 +19,7 @@ a{
 /* Util */
 
 .spacer{
-    width:100%;
+    /*width:100%;*/
     border-bottom: 1px solid gray;
     margin: 35px 0 35px 0;
 
@@ -93,8 +93,16 @@ input:checked + .slider:before {
 
 /* Common */
 .content{
-    width: 100%;
+    width: 80%;
     text-align: center;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:auto;
+}
+
+.content div{
+    margin: 6px;
 }
 
 #header{
@@ -107,6 +115,43 @@ input:checked + .slider:before {
     float:right;
     padding: 10px 10px;
     text-decoration: none;
+}
+
+#header_logo{
+    display: inline-flex;
+    margin-left: 20%;
+}
+
+#header_logo a{
+    background: none;
+    border:none;
+    padding: 0;
+}
+
+#search_bar{
+    float:left;
+    padding:10px;
+}
+
+#search_bar ::placeholder{
+    font-style: italic;
+    opacity: .5;
+}
+
+#link_box{
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+#link_box span{
+    margin: 12px;
+    display:inline-block;
+}
+
+#link_box a{
+    text-decoration: none;
+    margin: 4px 15px 4px 15px;
+    font-weight:bold;
 }
 
 /* Forms */
@@ -155,6 +200,96 @@ input:checked + .slider:before {
 
 #password_toggle_container label:not(.switch){
     margin:0;
+}
+
+/* Home */
+#search_by_topic{
+    order: 0;
+    flex: 1 1 0;
+    background-color: #1cbbcc;
+    width: 40%;
+}
+
+#getting_started{
+    order: 1;
+    flex: 1 1 0;
+    background-color: #1ccc2a;
+    width: 60%;
+    font-family: monospace;
+}
+
+#getting_started button{
+    width:100%;
+    border:none;
+    padding:10px;
+    background-color: #ccc71c;
+}
+
+#getting_started p{
+    padding: 20px;
+}
+
+#popular_slider{
+    width:100%;
+    min-height: 220px;
+    background-color: #cc451c;
+    flex: 100%;
+    order: 3;
+}
+
+/* Account */
+.left_container{
+    min-width: 316px;
+    height: 100%;
+    float:left;
+    flex: 1 1 0; 
+}
+
+.right_container{
+    border: 8px groove #8a8a8a;
+    min-width: 200px;
+    width:inherit;
+    float:right;
+    background-color: rgb(180, 180, 180);
+    flex: 1 1 0;
+}
+
+.upper_container{
+    border-bottom: 3px groove white;
+}
+
+.lower_container{
+    border-bottom: 3px groove white;
+}
+
+.upper_container img{
+    margin: 30px;
+}
+
+#profile_header{
+    margin-bottom: 40px;
+}
+
+#favorites_panel{
+
+}
+
+.fav_item{
+    height: 50px;
+    background: green;
+    margin: 5px;
+}
+
+.submitted_item{
+    height: 150px;
+    background:blue;
+    margin:5px;
+}
+
+.blog_item{
+    height: 150px;
+    background:red;
+    margin:5px;
 }
 
 /* Component Themes */
