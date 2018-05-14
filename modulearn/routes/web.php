@@ -44,3 +44,7 @@ Route::get('/about', function(){
 
 //Errors
 Route::get('/error/{msg}', 'ErrorController@errorView');
+
+
+//Admin/Manage
+Route::get('/manage', 'ManageController@manageView');

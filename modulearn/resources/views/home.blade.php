@@ -12,9 +12,9 @@
         @include('partial/header')
 
         <div class="content">
-            <div id="search_by_topic">
+            <div id="search-by-topic">
                 <h2>Search by Topic</h2>
-                <div id="link_box">
+                <div id="link-box">
                     <?php $topics=array('Computer Science','Math','English', 'Electrical Engineering', 'Physics',
                     'Biology', 'History', 'Religion', '') ?>
                     @foreach($topics as $topic)
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div id="getting_started">
+            <div id="getting-started">
                 <h2>Getting Started</h2>
                 <div class='spacer'></div>
                 <p>
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div id="popular_slider">
+            <div id="popular-slider">
                 <h2>Popular Threads</h2>
             </div>
         </div>

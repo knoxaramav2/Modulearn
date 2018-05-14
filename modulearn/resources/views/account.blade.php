@@ -12,34 +12,33 @@
         @include('partial/header')
 
         <div class="content">
-
-            <div class="left_container">
-                <div class="upper_container">
-                    <div id="profile_header">
+            <div class="left-container">
+                <div class="upper-container">
+                    <div id="profile-header">
                         <img src="{{asset('images/a.jpg')}}" alt="Placeholder" height="256" width="256">
                         <a href="">Edit</a>
                     </div>
                 </div>
-                <div class="lower_container">
-                    <div id="favorites_panel">
+                <div class="lower-container">
+                    <div id="favorites-panel">
                         <h3>Favorites</h3>
                         @for($x=0; $x<=10; ++$x)
-                            <div class="fav_item"></div>
+                            <div class="fav-item"></div>
                         @endfor
                     </div>
                 </div>
             </div>
-            <div class="right_container">
-                <div class="upper_container">
+            <div class="right-container">
+                <div class="upper-container">
                     <h2>Submitted</h2>
                     @for($x=0; $x<=3; ++$x)
-                        <div class="submitted_item"></div>
+                        <div class="submitted-item"></div>
                     @endfor
                 </div>
-                <div class="lower_container">
+                <div class="lower-container">
                     <h2>Blog Posts</h2>
                     @for($x=0; $x<=3; ++$x)
-                        <div class="blog_item"></div>
+                        <div class="blog-item"></div>
                     @endfor
                 </div>
             </div>
