@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::post('manage/terminal', 'ManageController@terminalCommand');
+Route::post('/manage/terminal', function(){
+    $user = Session::get('user');
+    Log::info('TERM');
+    Log::info($user);
+    return View::make('/manage/terminal', ['user'=>$user]);
+});

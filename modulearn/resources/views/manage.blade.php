@@ -12,23 +12,30 @@
 
         <div class="content manage-content">
             <div id='manage-sidebar'>
-                <?php $option_list = array('Manage Users', 'Manage Topics') ?>
-
                 <div class='manage-sidebar-title'><h2>Manage Panel</h2></div>
                 <div class='spacer'></div>
-                @foreach($option_list as $ot)
-                    <button class='manage-sidebar-item'>{{$ot}}</button>
-                @endforeach
-            </div>
-            <div id='manage-main'>
-                <div id='manage-main-'>
-
+                    <div>
+                        <button class='manage-sidebar-item' onclick='location.href="manage/terminal"'>Terminal</button>
+                    </div>
+                    <div>
+                        <button class='manage-sidebar-item' onclick='location.href="manage/users"'>Manage Users</button>
+                    </div>
+                    <div>
+                        <button class='manage-sidebar-item' onclick='location.href="manage/topics"'>Manage Topics</button>
+                    </div>
                 </div>
-                <div>
-
+            <div id='manage-main'>
+                <div class='manage-main-block'>
+                    <h2>Analytics</h2>
+                </div>
+                <div class='manage-main-block'>
+                    <h2>Stuff</h2>
                 </div>
             </div>
         </div>
     </body>
 
+    <script>
+        
+    </script>
 </html>

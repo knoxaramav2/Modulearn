@@ -295,17 +295,16 @@ input:checked + .slider:before {
 /* Management */
 
 .manage-content{
-    float:left;
-    width:250px;
 }
 
 #manage-sidebar{
     min-width: 200px;
     width:100%;
-    border: 3px groove black;
+    border: 3px groove darkgray;
     background-color: lightgray;
     color:black;
     height:-webkit-fill-available;
+    flex: .1;
 }
 
 #manage-sidebar button{
@@ -319,6 +318,31 @@ input:checked + .slider:before {
 .manage-sidebar-title, .manage-sidebar-item{
     border: 4px groove darkgray;
     min-height:40px;
+}
+
+#manage-main{
+    background-color:lightgray;
+    width:100%;
+    flex: 1;
+    border: 3px groove darkgray;
+}
+
+.manage-main-block{
+    border: 3px groove darkgray;
+}
+
+.terminal{
+    width:100%;
+    max-width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    padding:20px;
+}
+
+.terminal textarea{
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    resize:none;
+    background-color: black;
 }
 
 /* Component Themes */

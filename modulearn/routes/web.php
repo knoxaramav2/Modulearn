@@ -2,7 +2,6 @@
 
 use App\User;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,11 +34,13 @@ Route::get('account', 'UserController@accountView');
 
 //Topics
 Route::get('/topics', function(){
-    return view('topics');
+    $user = Session::get('user');
+    return View::make('topics', ['user'=>$user]);
 });
 
 Route::get('/about', function(){
-    return view('about');
+    $user = Session::get('user');
+    return View::make('about', ['user'=>$user]);
 });
 
 //Errors
@@ -48,3 +49,7 @@ Route::get('/error/{msg}', 'ErrorController@errorView');
 
 //Admin/Manage
 Route::get('/manage', 'ManageController@manageView');
+Route::get('/manage/users', 'ManageController@usersManage');
+Route::get('/manage/terminal', 'ManageController@terminal');
+Route::get('/manage/topics', 'ManageController@topicsManage');
+

@@ -44,8 +44,8 @@ class UserController extends Controller
     }
 
     public function loginView(){
-        Log::info('login view');
-        Log::info(session()->all());
+        if(Session::has('user'))
+            return redirect('/');
 
         return view('login');
     }
