@@ -118,6 +118,7 @@ class UserController extends Controller
 
         $limit = $request->input('limit');
         $offset = $request->input('offset');
+        $page = $request->input('page_no');
 
         Log::info($limit);
         Log::info($offset);
@@ -129,6 +130,12 @@ class UserController extends Controller
         if (!isset($offset)){
             $offset = 0;
         }
+
+        if (!isset($page)){
+            $page = 1;
+        }
+
+        $currentPage = $page;
 
         Paginator::currentPageResolver(function() use ($currentPage){
             return $currentPage;

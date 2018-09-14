@@ -23,6 +23,11 @@
             </table>
 
         <div class="content">
+            <div>
+                <button onclick="loadPrevUserPage();">Previous</button>
+                <span id='page_num'></span>
+                <button onclick="loadNextUserPage();">Next</button>
+            </div>
         </div>
     </body>
 
@@ -30,6 +35,7 @@
 
         const defaultLimit = 25;
         const defaultOffset = 0;
+        var currentPage = 1;
 
         function createCell(text){
             var cell = document.createElement('td');
@@ -39,13 +45,13 @@
         }
 
         function loadUsersTable(entries){
-            console.log(entries);
+            //console.log(entries);
             var newBody = document.createElement('tbody');
 
             let isEven = true;
             
             entries.data.forEach(user => {
-                console.log(user);
+                //console.log(user);
                 var row = document.createElement('tr');
 
                 if (isEven){
@@ -63,29 +69,38 @@
 
             var oldBody = document.getElementsByTagName('tbody')[0];
             oldBody.parentNode.replaceChild(newBody, oldBody);
+
+            let pageNum = document.getElementById('page_num');
+            pageNum.textContent="page " + entries.current_page;
+            //currentPage = parseInt(entries.current_page);
         }
 
-        function loadUserData(count, offset){
+        function loadUserData(count, offset, pageChange){
 
-            if (count === undefined){
-                count = defaultLimit;
-            }
+            if (count === undefined){count = defaultLimit;}
+            if (offset === undefined){offset = defaultLimit;}
+            if (pageChange === undefined) {pageChange = 0;}
 
-            if (offset === undefined){
-                offset = defaultLimit;
-            }
+            console.log(">> " + pageChange + " " + currentPage);
 
             const Http = new XMLHttpRequest();
             url = "/api/user/getList";
-            params = "limit="+count+"&offset="+offset;
+            params = "limit="+count+"&offset="+offset+"&page_no="+(currentPage+pageChange);
             console.log(params);
             url += "?"+params;
             Http.onreadystatechange=function(){
                 if (this.readyState == 4 && this.status == 200){
-                    console.log(Http.responseText);
+                    //console.log(Http.responseText);
                     let results = JSON.parse(Http.responseText);
+
+                    if (results.data.length === 0){
+                        return;
+                    }
+
                     loadUsersTable(results);
                     console.log("Returned " + results.data.length + " results");
+
+                    currentPage = parseInt(currentPage) + parseInt(pageChange);
                 }
             }
             Http.open("GET", url, true);
@@ -93,11 +108,13 @@
         }
 
         function loadNextUserPage(){
-
+            loadUserData(undefined, defaultLimit * currentPage, 1);
         }
 
         function loadPrevUserPage(){
-
+            console.log("CURR " + currentPage);
+            if (currentPage <= 1){return;}
+            loadUserData(undefined, defaultLimit * currentPage, -1);
         }
     </script>
 
