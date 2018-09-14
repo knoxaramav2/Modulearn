@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modulearn\Http\Controllers;
 
 //include(app_path().'/Scripts/Auth.php');
 
@@ -29,7 +29,7 @@ class ManageController extends Controller
             return redirect('error/I hear violins...');
         }
 
-        return view('manage/users');
+        return view('manage/users')->with(['user'=>$user]);
     }
 
     public function terminal(){

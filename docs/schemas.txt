@@ -1,0 +1,10 @@
+<users>
+id
+name
+email
+password
+isAdmin         |Note: Admin permission table instead?
+
+<snippet>
+id
+subject

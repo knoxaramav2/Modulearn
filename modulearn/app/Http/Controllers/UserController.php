@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modulearn\Http\Controllers;
 
-use App\User;
+use Modulearn\User;
 
 use Illuminate\Http\Request;
 use Session;
 use Auth;
 use Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Pagination\Paginator;
 use Redirect;
 use Hash;
 use Log;
@@ -107,5 +108,34 @@ class UserController extends Controller
         }
 
         return view('account', ['user'=>$user]);
+    }
+
+    public function getList(Request $request){
+
+        $currentPage = 1;
+
+        Log::info($request);
+
+        $limit = $request->input('limit');
+        $offset = $request->input('offset');
+
+        Log::info($limit);
+        Log::info($offset);
+
+        if (!isset($limit)){
+            $limit = 25;
+        }
+
+        if (!isset($offset)){
+            $offset = 0;
+        }
+
+        Paginator::currentPageResolver(function() use ($currentPage){
+            return $currentPage;
+        });
+
+        $usersPage = User::paginate($limit);
+
+        return $usersPage;
     }
 }

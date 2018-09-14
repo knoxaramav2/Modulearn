@@ -24,3 +24,5 @@ Route::post('/manage/terminal', function(){
     Log::info($user);
     return View::make('/manage/terminal', ['user'=>$user]);
 });
+
+Route::get('/user/getList', "UserController@getList");

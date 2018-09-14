@@ -22,6 +22,11 @@ Route::get('/', function () {
     return View::make('home', ['user'=>$user]);
 });
 
+Route::get('/test', function(){
+    Log::info(DB::select(DB::raw("select name from users")));
+    return DB::select(DB::raw("select name from users"));
+});
+
 
 //User login/logout
 Route::post('login', 'UserController@loginAs');

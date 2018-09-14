@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modulearn\Http\Controllers;
 use Session;
 
 use Illuminate\Http\Request;

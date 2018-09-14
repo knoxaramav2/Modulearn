@@ -1,0 +1,11 @@
+#artisan
+#list entries in table
+php artisan tinker
+>>> App\{Model}::all()
+or
+DB::table('table_name')->get()
+
+#list tables
+DB::select("select name from sqlite_master where type='table' order by name")
+#list schema
+Schema::getColumnListing('table_name')
