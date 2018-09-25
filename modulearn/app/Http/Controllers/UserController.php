@@ -5,6 +5,7 @@ namespace Modulearn\Http\Controllers;
 use Modulearn\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Session;
 use Auth;
 use Validator;
@@ -14,6 +15,7 @@ use Redirect;
 use Hash;
 use Log;
 use Mail;
+use DB;
 
 class UserController extends Controller
 {
@@ -120,9 +122,6 @@ class UserController extends Controller
         $offset = $request->input('offset');
         $page = $request->input('page_no');
 
-        Log::info($limit);
-        Log::info($offset);
-
         if (!isset($limit)){
             $limit = 25;
         }
@@ -141,8 +140,32 @@ class UserController extends Controller
             return $currentPage;
         });
 
-        $usersPage = User::paginate($limit);
+        $users = DB::select('select users.id, 
+            users.name, users.email, users.isAdmin FROM users
+            LIMIT 10 OFFSET '.$offset);//User::select('name', 'id', 'email', 'isAdmin');
+        //$usersPage = $this->arrayPaginator($users, $request);
+        Log::info($users);
 
-        return $usersPage;
+        return $users;//$usersPage;
+    }
+
+    function arrayPaginator($array, $request){
+        $page = request()->get('page', 1);//Input::get('page', 1);
+        $limit = 5;//Input::get('limit', 1);
+        $offset = ($page * $limit) - $limit;
+
+        //Log::info(count($array));
+
+        $slice = array_slice($array, $offset, $limit, true);
+
+        $pager = new LengthAwarePaginator(
+            $slice, 
+            count($slice),
+            $limit, Paginator::resolveCurrentPage(), 
+            array('path' => Paginator::resolveCurrentPath()));
+            //['path'=>$request->url(), 'query'=>$request->query()]);
+
+        Log::info($page);
+        return $pager;
     }
 }

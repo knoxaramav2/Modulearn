@@ -40,7 +40,7 @@
 
                 <div>
                     <div><button>Start Creating</button></div>
-                    <div><button>Explore</button></div>
+                    <div><button onclick="redirect('/api/content')">Explore</button></div>
                 </div>
             </div>
 
@@ -51,3 +51,10 @@
 
     </body>
 </html>
+
+<script>
+    
+    function redirect(url){
+        window.location = url;
+    }
+</script>

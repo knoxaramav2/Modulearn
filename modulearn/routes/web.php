@@ -43,6 +43,9 @@ Route::get('/topics', function(){
     return View::make('topics', ['user'=>$user]);
 });
 
+
+
+//other
 Route::get('/about', function(){
     $user = Session::get('user');
     return View::make('about', ['user'=>$user]);

@@ -84,14 +84,11 @@ input:checked + .slider:before {
 
 .data-table tr{
     border-bottom: 2px solid black;
-}
-
-.data-table tr{
     text-align: right;
     background-color:lightgray;
 }
 
-.data-table .dark-td{
+table .element-td-dark{
     background-color: darkgray;
 }
 

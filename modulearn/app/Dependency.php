@@ -9,4 +9,7 @@ class Dependency extends Model
     /**
      * Entry dependency joint object
      */
+    protected $fillable = [
+        'depends_id', 'dependant_id'
+    ];
 }
