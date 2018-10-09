@@ -1,19 +1,43 @@
 /* Primary Components */
 body {
-    background: #c5c386;
+    background: white;
+    margin: 0px;
 }
 
 h1, h2, h3 {
-    color: white;
+    color: black;
     text-align: center;
 }
 
 a{
-    color:white;
+    color:black;
 }
 
 .color-matrix{
     color: greenyellow;
+}
+
+.content{
+    width: 100%;
+    margin:auto;
+}
+
+.content-item{
+    height: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 2px solid #c3c3c3;
+    margin-bottom: 10px;
+}
+
+.content-item h2{
+    border-bottom: 2px solid c3c3c3;
+    background-color: lightgray;
+    margin: 0;
+}
+
+.content h1,h2,h3{
+    text-align: left;
 }
 
 /* Util */
@@ -114,18 +138,6 @@ table .element-td-dark{
 }
 
 /* Common */
-.content{
-    width: 80%;
-    text-align: center;
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin:auto;
-}
-
-.content div{
-    margin: 6px;
-}
 
 #header{
     width:100%;
@@ -225,19 +237,36 @@ table .element-td-dark{
 }
 
 /* Home */
-#search-by-topic{
-    order: 0;
-    flex: 1 1 0;
-    background-color: #1cbbcc;
-    width: 40%;
+.home-header{
+    background-image: url("/images/banner.png");
+    background-repeat: no-repeat;
+    height: 500px;
+    padding: 20px;
 }
 
-#getting-started{
-    order: 1;
-    flex: 1 1 0;
-    background-color: #1ccc2a;
-    width: 60%;
-    font-family: monospace;
+.home-header h1,h3{
+    color:black;
+    margin: 5px;
+    padding:5px;
+}
+
+.home-header div{
+    background-color: #00f3ff;
+    margin: auto;
+}
+
+.home-header nav div{
+    max-width: 600px;
+    padding: 0px 30px;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.home-header div a, h1{
+    color:#7b7b7b;
+    font-family: monospace, sans-serif;
+    background: none;
+    text-decoration: none;
 }
 
 #getting-started button{
@@ -372,7 +401,24 @@ table .element-td-dark{
 
 
 
-
-
-
 /* Responsive */
+
+@media only screen and (max-width: 1400px){
+    .home-header{
+        background-image: url("/images/banner_1400.png");
+        height: 350px;
+    }
+
+    .home-header nav{
+        float:right;
+        max-width: 300px;
+    }
+
+}
+
+@media only screen and (max-width: 600px){
+    .home-header{
+        background-image: url("/images/banner_600.png");
+        height: 200px;
+    }
+}

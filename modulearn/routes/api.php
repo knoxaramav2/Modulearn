@@ -21,7 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::post('manage/terminal', 'ManageController@terminalCommand');
 Route::post('/manage/terminal', function(){
     $user = Session::get('user');
     Log::info('TERM');
@@ -30,3 +29,4 @@ Route::post('/manage/terminal', function(){
 });
 
 Route::get('/user/getList', "UserController@getList");
+

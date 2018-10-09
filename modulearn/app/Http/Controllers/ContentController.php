@@ -27,8 +27,8 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
-        return "Test";
+        $user = Session::get('user');
+        return view('topics/create')->with(['user'=>$user]);
     }
 
     /**

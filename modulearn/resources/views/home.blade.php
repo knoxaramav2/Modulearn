@@ -11,41 +11,27 @@
     
         @include('partial/header')
 
-        <div class="content">
-            <div id="search-by-topic">
-                <h2>Search by Topic</h2>
-                <div id="link-box">
-                    <?php $topics=array('Computer Science','Math','English', 'Electrical Engineering', 'Physics',
-                    'Biology', 'History', 'Religion', '') ?>
-                    @foreach($topics as $topic)
-                        <span><a href="/">{{$topic}}</a></span>
-                    @endforeach
-                </div>
-            </div>
-
-            <div id="getting-started">
-                <h2>Getting Started</h2>
-                <div class='spacer'></div>
-                <p>
-                    Modulearn is a platform for creating more than 
-                    just tutorials. It is a place for connecting ideas
-                    together to make learning easy and intuitive.
-                </p>
-                <p> 
-                    Users
-                    are also encouraged to use the platform to write
-                    projects they work on and their findings, to utilize
-                    this site as one large knowledge base.
-                </p>
-
+        <header class='home-header'>
+            <nav>
+                <div><a href='/'><h1>Start Here</h1></a></div>
+                <div><a href='/'><h1>Explore Content</h1></a></div>
+                <div><a href='/about'><h1>About Modulearn</h1></a></div>
+            </nav>
+        </header>
+        <div class='content'>
+            <div class='content-item'>
                 <div>
-                    <div><button>Start Creating</button></div>
-                    <div><button onclick="redirect('/api/content')">Explore</button></div>
+                    <h2>Trending Tutorials</h2>
+                </div>
+                <div>
+
                 </div>
             </div>
-
-            <div id="popular-slider">
-                <h2>Popular Threads</h2>
+            <div class='content-item'>
+                <div>
+                    <h2>Trending Blog Posts</h2>
+                </div>
+                
             </div>
         </div>
 

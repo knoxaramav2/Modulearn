@@ -5,26 +5,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script 'text/javascript' src='{{URL::asset('js/element.js')}}'></script>
+        <script 'text/javascript' src='{{URL::asset('js/element.js')}}'></script>
 
         <title>Modulearn - Manage Users</title>
     </head>
     <body onload="loadUserData();">
         @include('partial/header')
-
-            <!--
-            <table class='data-table'>
-                <thead>
-                    <th>User Name</th>
-                    <th>Id</th>
-                    <th>Email</th>
-                    <th>Admin</th>
-                </thead>
-                <tbody>
-                    <td></td>
-                </tbody>
-            </table>
-        -->
 
         <div id='element-table'>
 

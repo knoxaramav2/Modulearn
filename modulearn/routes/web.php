@@ -40,20 +40,11 @@ Route::get('account', 'UserController@accountView');
 //Topics
 Route::get('/topics', function(){
     $user = Session::get('user');
-    return View::make('topics', ['user'=>$user]);
-});
-
-
-
-//other
-Route::get('/about', function(){
-    $user = Session::get('user');
-    return View::make('about', ['user'=>$user]);
+    return View::make('topics/topics', ['user'=>$user]);
 });
 
 //Errors
 Route::get('/error/{msg}', 'ErrorController@errorView');
-
 
 //Admin/Manage
 Route::get('/manage', 'ManageController@manageView');
@@ -61,3 +52,10 @@ Route::get('/manage/users', 'ManageController@usersManage');
 Route::get('/manage/terminal', 'ManageController@terminal');
 Route::get('/manage/topics', 'ManageController@topicsManage');
 
+//Content
+
+//other
+Route::get('/about', function(){
+    $user = Session::get('user');
+    return View::make('about', ['user'=>$user]);
+});

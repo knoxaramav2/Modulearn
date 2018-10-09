@@ -33,22 +33,12 @@ class ManageController extends Controller
     }
 
     public function terminal(){
-
-        //$user = getAuthUser(true);
-        //if(!isset($user))
-        //    return redirect('/');
-
-        //Session::flash('user', $user);
-        //Session::save();
-
         $user = Session::get('user');
 
         return view('manage/terminal')->with(['user'=>$user]);
     }
 
     public function terminalCommand(Request $request){    
-
-        //$user = getAuthUser(true);
         $user = Session::get('user');
         Log::info("TERM");
         Log::info(Session::all());
@@ -57,8 +47,6 @@ class ManageController extends Controller
 
         $msg = $request->get('msg');
         Log::info("ROOT " . $msg);
-
-
     }
 
     public function topics(){
