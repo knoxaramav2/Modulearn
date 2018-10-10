@@ -12,15 +12,21 @@
     <body onload='ready();'>
         @include('partial/header')
 
-        <div class="content">
-            <h1>Create New Tutoriallette</h1>
-
+        <div id='topic-create-editor'>
+            <div><input type="text" id='topic-create-title' placeholder="Title"></input></div>
+            <div class='container-side-by-side'>
+                <div class='container-left' id='topic-editor-text'>
+                    <textarea></textarea>
+                </div>
+                <div class='container-right' id='topic-editor-toolbox'>
+                    <span>hello</span>
+                </div>
+            </div>
             <div>
-                <form>
-
-                </form>
+                <span>footer</span>
             </div>
         </div>
+
     </body>
     <script>
     

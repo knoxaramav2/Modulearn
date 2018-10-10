@@ -40,6 +40,26 @@ a{
     text-align: left;
 }
 
+.horiz-nav-bar{
+    text-align: center;
+    border-bottom: 2px solid lightgray;
+}
+
+.horiz-nav-bar div{
+    width: fit-content;
+    background-color: #00f3ff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 15px auto;
+}
+
+.horiz-nav-bar a{
+    text-decoration: none;
+    font-size: xx-large;
+    font-weight: 900;
+
+}
+
 /* Util */
 
 .spacer{
@@ -89,6 +109,13 @@ input:checked + .slider:before {
     transform: translateX(12px);
 }
 
+.hover-react-color:hover{
+    background-color: lime;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
 .error{
     color:red;
     font-weight: bold;
@@ -135,6 +162,28 @@ table .element-td-dark{
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
+}
+
+.container-side-by-side{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+    background-color: red;
+}
+
+.container-left{
+    height: 100%;
+    width: 50%;
+    float: left;
+    background-color: blue;
+}
+
+.container-right{
+    height: 100%;
+    width: 50%;
+    float: right;
+    background-color:green;
 }
 
 /* Common */
@@ -394,6 +443,31 @@ table .element-td-dark{
     height: -webkit-fill-available;
     resize:none;
     background-color: black;
+}
+
+/* Topics */
+#topic-create-editor{
+    height: 400px;
+}
+
+#topic-editor-text{
+    width: 70%;
+}
+
+#topic-create-editor textarea{
+
+}
+
+#topic-create-editor div{
+
+}
+
+#topic-create-title{
+
+}
+
+#topic-editor-toolbox{
+    width: 30%;
 }
 
 /* Component Themes */

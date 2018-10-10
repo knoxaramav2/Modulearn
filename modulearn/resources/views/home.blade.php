@@ -13,9 +13,9 @@
 
         <header class='home-header'>
             <nav>
-                <div><a href='/'><h1>Start Here</h1></a></div>
-                <div><a href='/'><h1>Explore Content</h1></a></div>
-                <div><a href='/about'><h1>About Modulearn</h1></a></div>
+                <div class='hover-react-color'><a href='/'><h1>Start Here</h1></a></div>
+                <div class='hover-react-color'><a href='/'><h1>Explore Content</h1></a></div>
+                <div class='hover-react-color'><a href='/about'><h1>About Modulearn</h1></a></div>
             </nav>
         </header>
         <div class='content'>

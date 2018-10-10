@@ -43,6 +43,13 @@ Route::get('/topics', function(){
     return View::make('topics/topics', ['user'=>$user]);
 });
 
+//Topics
+Route::get('/topics/create', function(){
+    $user = Session::get('user');
+    return View::make('topics/create', ['user'=>$user]);
+});
+
+
 //Errors
 Route::get('/error/{msg}', 'ErrorController@errorView');
 

@@ -11,7 +11,9 @@
         @include('partial/header')
 
         <div class="content">
-            <h1>Topics</h1>
+            <nav class='horiz-nav-bar'>
+                <div class='hover-react-color'><a href='/topics/create'>Create A Topic!</a></div>
+            </nav>
         </div>
     </body>
 
