@@ -4,7 +4,7 @@ body {
     margin: 0px;
 }
 
-h1, h2, h3 {
+a h1, h2, h3 {
     color: black;
     text-align: center;
 }
@@ -446,29 +446,7 @@ table .element-td-dark{
 }
 
 /* Topics */
-#topic-create-editor{
-    height: 400px;
-}
 
-#topic-editor-text{
-    width: 70%;
-}
-
-#topic-create-editor textarea{
-
-}
-
-#topic-create-editor div{
-
-}
-
-#topic-create-title{
-
-}
-
-#topic-editor-toolbox{
-    width: 30%;
-}
 
 /* Component Themes */
 
@@ -487,7 +465,6 @@ table .element-td-dark{
         float:right;
         max-width: 300px;
     }
-
 }
 
 @media only screen and (max-width: 600px){

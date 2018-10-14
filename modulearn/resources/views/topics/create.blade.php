@@ -5,35 +5,40 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script 'text/javascript' src='{{URL::asset('js/showdown-master/src/showdown.js')}}'></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+        <link href="{{asset('css/tutorial.css')}}" rel="stylesheet">
 
         <title>Modulearn - Create Tutoriallette</title>
     </head>
     <body onload='ready();'>
         @include('partial/header')
-
-        <div id='topic-create-editor'>
-            <div><input type="text" id='topic-create-title' placeholder="Title"></input></div>
-            <div class='container-side-by-side'>
-                <div class='container-left' id='topic-editor-text'>
-                    <textarea></textarea>
+        <div id='tutorial-editor'>
+            <div>
+                <div>
+                    <input type='text' placeholder="Enter a title"/>
                 </div>
-                <div class='container-right' id='topic-editor-toolbox'>
-                    <span>hello</span>
+                <div>
+                    <textarea id='md-editor'></textarea>
                 </div>
             </div>
             <div>
-                <span>footer</span>
+
             </div>
         </div>
-
+        
     </body>
     <script>
     
-    var converter = new showdown.Converter();
-
     function ready(){
-    
+        var simplemde = new SimpleMDE({
+            element:document.getElementById("md-editor"),
+            indentWithTabs: false,
+            spellChecker: true,
+            tabSize: 4,
+            autofocus: true
+            });
     }
 
     </script>

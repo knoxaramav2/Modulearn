@@ -1,0 +1,17 @@
+/* 
+
+    Specific for tutorial rendering
+    !important tags allowed
+
+*/
+
+.CodeMirror-line{/*Override from simplemde.css */
+    font-family: 'Trebuchet MS', 'Courier', 'Helvetica', 'Arial', 'Comic Sans MS' !important;
+}
+
+/* Editor */
+#tutorial-editor{
+    width: 95%;
+    margin: auto;
+    padding: 10px;
+}
