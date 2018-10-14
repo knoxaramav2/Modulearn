@@ -15,7 +15,7 @@
     <body onload='ready();'>
         @include('partial/header')
         <div id='tutorial-editor'>
-            <div>
+            <div id='tutorial-editor-main'>
                 <div>
                     <input type='text' placeholder="Enter a title"/>
                 </div>
@@ -23,8 +23,13 @@
                     <textarea id='md-editor'></textarea>
                 </div>
             </div>
-            <div>
-
+            <div id='tutorial-editor-toolbar'>
+                <div class='tutorial-editor-tool'>Tool</div>
+                <div class='tutorial-editor-tool'>Tool</div>
+                <div class='tutorial-editor-tool'>Tool</div>
+                <div class='tutorial-editor-tool'>Tool</div>
+                <div class='tutorial-editor-tool'>Tool</div>
+                <div class='tutorial-editor-tool'>Tool</div>
             </div>
         </div>
         

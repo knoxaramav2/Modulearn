@@ -10,8 +10,45 @@
 }
 
 /* Editor */
+#tutorial-editor input{
+    font-size: x-large;
+}
+
 #tutorial-editor{
     width: 95%;
     margin: auto;
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#tutorial-editor-main{
+    width: 80%;
+    float: left;
+}
+
+#tutorial-editor-toolbar{
+    background-color: gray;
+    width: 100%;
+    max-width: 20%;
+    min-width: 200px;
+}
+
+
+/* Responsive */
+@media only screen and (max-width: 1400px){
+    #tutorial-editor input{
+        width: 99%;
+    }
+}
+
+@media only screen and (max-width: 640px){
+    #tutorial-editor{
+        flex-direction: column;
+    }
+
+    #tutorial-editor-toolbar{
+        max-width: 100%;
+        width: 100%;
+    }
 }
