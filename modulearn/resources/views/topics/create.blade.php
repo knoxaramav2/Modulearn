@@ -35,35 +35,28 @@
                             <h3>Add pre-requisites</h3>
                         </div>
                         <div id='add-dep-btn'>
-                            <button>
-                                Add a dependency
-                                <img src='/icons/add-content.ico'>
-                            </button>
+                            <div>
+                                <button onclick="addDependency();">
+                                    Add a dependency
+                                    <img src='/icons/add-content.ico'>
+                                </button>
+                            </div>
+                            <div class='tooltip-parent'>
+                                <input type='number' id='dependency-id'
+                                    placeholder="Enter dependency id">
+                                    <span class='tooltip'>Id can be found on the tutorial page</span>
+                            </div>
                         </div>
                         <div id='dependency-list'>
-                            <div class='dependency-item'>
+                            <!--<div class='dependency-item'>
                                 <span>Dependency</span>
                                 <button>-</button>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
-                <div class='tutorial-editor-tool'>Tool</div>
-                <div class='tutorial-editor-tool'>Tool</div>
-                <div class='tutorial-editor-tool'>Tool</div>
-                <div class='tutorial-editor-tool'>Tool</div>
-                <div class='tutorial-editor-tool'>Tool</div>
             </div>
         </div>
-        <!--
-        <div id='tutorial-entry-control'>
-            <form action='/api/content' method='post'>
-                <input type='submit' value='Submit' onclick="prepareSubmitData();">
-                <input type='text' id='markdown' name='markdown' hidden>
-                <input type='text' id='title' name='title' hidden>
-            </form>
-            
-        </div>-->
         
     </body>
     <script>
@@ -83,6 +76,29 @@
                 tabSize: 4,
                 autofocus: true
                 });
+        }
+
+        function addDependency(){
+            let idDiv = document.getElementById('dependency-id');
+            let id = idDiv.value;
+            if (id.length === 0){
+                console.log("EMPTY");
+                return;
+            }
+            
+            let depList = document.getElementById('dependency-list');
+            let div = document.createElement('div');
+            let span = document.createTextNode(id);
+            let button = document.createElement('button');
+            let min = document.createTextNode('-');
+            button.onclick=(function(){div.remove()});
+            button.appendChild(min);
+            div.classList.add('dependency-item');
+            div.appendChild(span);
+            div.appendChild(button);
+            depList.appendChild(div);
+
+            idDiv.value='';
         }
 
     </script>

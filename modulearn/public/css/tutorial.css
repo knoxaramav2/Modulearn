@@ -11,7 +11,13 @@
 
 /* Editor */
 #tutorial-editor input{
-    font-size: x-large;
+    font-size: large;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 #tutorial-editor{
@@ -42,18 +48,6 @@ form input[type='submit']{
     margin-left: 1%;
     padding-right: 8px;
 }
-/*
-#tutorial-entry-control{
-    width: 95%;
-    margin: auto;
-    text-align: end;
-}
-
-#tutorial-entry-control input[type='submit']{
-    border:none;
-    font-size: x-large;
-    padding: 10px;
-}*/
 
 #dependency-container{
     width: 100%;
