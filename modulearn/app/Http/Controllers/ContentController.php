@@ -16,6 +16,7 @@ class ContentController extends Controller
      */
     public function index()
     {
+        Log::info("Index");
         $user = Session::get('user');
         return view('topics/topics')->with(['user'=>$user]);
     }
@@ -39,7 +40,9 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Log::info($request);
+        $user = Session::get('user');
+        return view('topics/topics')->with(['user'=>$user]);
     }
 
     /**
