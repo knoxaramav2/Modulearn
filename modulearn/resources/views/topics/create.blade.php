@@ -16,7 +16,7 @@
         @include('partial/header')
         <div id='tutorial-editor'>
             <div id='tutorial-editor-main'>
-                <form action='/api/content' method='post'>
+                <form action='/api/content' id='tutorial-form' method='post'>
                     {{ csrf_field() }}
                     <input type='hidden' id='input-markdown' name='input-markdown'>
                     <div>
@@ -66,6 +66,20 @@
         function prepareSubmitData(){
             let md = document.getElementById("input-markdown");
             md.value = simplemde.value();
+
+            let deps = document.getElementsByClassName('dependency-item');
+            let form = document.getElementById('tutorial-form');
+
+            console.log(deps);
+
+            for(let itr = 0; itr < deps.length; ++itr){
+                let input = document.createElement('input');
+                input.type='text';
+                input.name = 'dep-' + itr;
+                input.hidden = true;
+                input.value=deps[itr].firstChild.innerText;
+                form.appendChild(input);
+            };
         }
     
         function ready(){
@@ -82,17 +96,19 @@
             let idDiv = document.getElementById('dependency-id');
             let id = idDiv.value;
             if (id.length === 0){
-                console.log("EMPTY");
                 return;
             }
             
             let depList = document.getElementById('dependency-list');
             let div = document.createElement('div');
-            let span = document.createTextNode(id);
+            let text = document.createTextNode(id);
+            let span = document.createElement('span');
             let button = document.createElement('button');
             let min = document.createTextNode('-');
+            
             button.onclick=(function(){div.remove()});
             button.appendChild(min);
+            span.appendChild(text);
             div.classList.add('dependency-item');
             div.appendChild(span);
             div.appendChild(button);
