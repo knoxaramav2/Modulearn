@@ -8,6 +8,6 @@ class MarkupEntry extends Model
 {
     //
     protected $fillable = [
-        'content', 'dependent_counter'
+        'content', 'dependents'
     ];
 }

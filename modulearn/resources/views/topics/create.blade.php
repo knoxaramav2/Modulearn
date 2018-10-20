@@ -16,7 +16,7 @@
         @include('partial/header')
         <div id='tutorial-editor'>
             <div id='tutorial-editor-main'>
-                <form action='/api/content' id='tutorial-form' method='post'>
+                <form action='/topics' id='tutorial-form' method='post'>
                     {{ csrf_field() }}
                     <input type='hidden' id='input-markdown' name='input-markdown'>
                     <div>
@@ -48,10 +48,6 @@
                             </div>
                         </div>
                         <div id='dependency-list'>
-                            <!--<div class='dependency-item'>
-                                <span>Dependency</span>
-                                <button>-</button>
-                            </div>-->
                         </div>
                     </div>
                 </div>

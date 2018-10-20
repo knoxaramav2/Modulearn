@@ -17,6 +17,10 @@ Route::resources([
     'users' => 'UserController'
 ]);
 
+Route::resources([
+    'topics' => 'ContentController'
+]);
+
 Route::get('/', function () {
     $user = Session::get('user');//User::where('name', '=', "Test User")->first();
     return View::make('home', ['user'=>$user]);
@@ -38,14 +42,11 @@ Route::get('login', 'UserController@loginView');
 Route::get('account', 'UserController@accountView');
 
 //Topics
-Route::get('/topics', function(){
-    $user = Session::get('user');
-    return View::make('topics/topics', ['user'=>$user]);
-});
-
-//Topics
 Route::get('/topics/create', function(){
     $user = Session::get('user');
+    if (!isset($user)){
+        return redirect('login');
+    }
     return View::make('topics/create', ['user'=>$user]);
 });
 

@@ -46,7 +46,6 @@ class ManageController extends Controller
             return;
 
         $msg = $request->get('msg');
-        Log::info("ROOT " . $msg);
     }
 
     public function topics(){

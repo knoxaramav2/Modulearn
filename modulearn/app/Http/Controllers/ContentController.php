@@ -16,7 +16,6 @@ class ContentController extends Controller
      */
     public function index()
     {
-        Log::info("Index");
         $user = Session::get('user');
         return view('topics/topics')->with(['user'=>$user]);
     }
@@ -29,7 +28,9 @@ class ContentController extends Controller
     public function create()
     {
         $user = Session::get('user');
-        return view('topics/create')->with(['user'=>$user]);
+        return view('topics/create')
+            ->with(['user'=>$user])
+            ->withInput();
     }
 
     /**
@@ -42,6 +43,30 @@ class ContentController extends Controller
     {
         Log::info($request);
         $user = Session::get('user');
+
+        if(!isset($user)){
+            return redirect('error/I hear violins...');
+        }
+
+        $content = $request['input-markdown'];
+        $title = $request['title'];
+        $userid = $user['id'];
+
+        $deps = array();
+
+        foreach ($_REQUEST as $key => $value){
+            if (substr($key, 0, 4) === 'dep-'){
+                array_push($deps, $value);
+            }
+        }
+
+        Log::info($deps);
+
+        unset($key);
+        unset($value);
+
+        //DB::insert('insert into content () values ()', );
+
         return view('topics/topics')->with(['user'=>$user]);
     }
 

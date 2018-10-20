@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resources([
-    'content' => 'ContentController'
-]);
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

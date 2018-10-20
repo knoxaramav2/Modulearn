@@ -14,12 +14,13 @@ a{
 }
 
 .color-matrix{
-    color: greenyellow;
+    color: green;
 }
 
 .content{
     width: 100%;
     margin:auto;
+    text-align: center;
 }
 
 .content-item{
@@ -268,8 +269,7 @@ table .element-td-dark{
     text-align:center;
     margin-top: 20px;
     padding: 20px;
-    border-radius: 25px;
-    background-color: darkcyan;
+    background-color: lightgray;
     min-width: 190px;
 }
 
