@@ -14,6 +14,14 @@
             <nav class='horiz-nav-bar'>
                 <div class='hover-react-color'><a href='/topics/create'>Create A Topic!</a></div>
             </nav>
+
+            <div>
+                @foreach($entries as $entry)
+                    <div>
+                        <span>{{$entry->title}}</span>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </body>
 

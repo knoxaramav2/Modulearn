@@ -4,10 +4,10 @@ namespace Modulearn;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MarkupEntry extends Model
+class Content extends Model
 {
     //
     protected $fillable = [
-        'content', 'dependents'
+        'title', 'content', 'dependents', 'owner_id'
     ];
 }

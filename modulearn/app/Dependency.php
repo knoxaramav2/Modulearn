@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dependency extends Model
 {
-    /**
-     * Entry dependency joint object
-     */
+    //
     protected $fillable = [
-        'depends_id', 'dependant_id'
+        'dependency_id', 'dependent_id'
     ];
+
+    public $timestamps = false;
 }

@@ -2,6 +2,9 @@
 
 namespace Modulearn\Http\Controllers;
 
+use Modulearn\Content;
+use Modulearn\Dependency;
+
 use Illuminate\Http\Request;
 use Session;
 use Log;
@@ -17,7 +20,16 @@ class ContentController extends Controller
     public function index()
     {
         $user = Session::get('user');
-        return view('topics/topics')->with(['user'=>$user]);
+
+        $entries = Content::all();
+        Log::info($entries);
+
+        $A = 'A';
+
+        Log::info("TEST");
+        Log::info($A);
+
+        return view('topics/topics')->with(array('A'=> $A, 'user'=>$user, 'entries'=>$entries));
     }
 
     /**
@@ -60,10 +72,18 @@ class ContentController extends Controller
             }
         }
 
-        Log::info($deps);
-
         unset($key);
         unset($value);
+
+        $entry = new Content;
+        $entry->title = $title;
+        $entry->content = $content;
+        $entry->owner_id = $userid;
+        $entry->dependents = 0;//= count($deps);
+
+        Log::info($entry);
+
+        $entry->save();
 
         //DB::insert('insert into content () values ()', );
 
