@@ -9,6 +9,8 @@
     </head>
     <body>
         @include('partial/header')
+        
+        <div>{{$passthrough}}</div>
 
         @if(isset($username))
 
@@ -19,19 +21,19 @@
         @else
 
         <div class="content">
-
             @if(Session::has('err-sec') && strcmp(Session::get('err-sec'), 'err-login') == 0)
                 @array-shift($errors);
                 @foreach($errors->all() as $error)
                     <div class='error'>
                         {{$error}}
+
                     </div>
                 @endforeach
             @endif
 
             <div class="login">
                 <h3>Login</h3>
-                <form method="post" action="/login">
+                <form method="post" action="/login?">
                     {{ csrf_field() }}
                     <label>Username</label>
                     <input type="text" placeholder="Enter Username" id="login-username" name="name">

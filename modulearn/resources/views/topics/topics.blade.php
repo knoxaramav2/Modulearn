@@ -17,9 +17,9 @@
 
             <div>
                 @foreach($entries as $entry)
-                    <div>
-                        <span>{{$entry->title}}</span>
-                    </div>
+                <div class='slot-entry'>
+                    <a href='/topics/{{$entry->id}}'><span>{{$entry->title}}</span></a>
+                </div>
                 @endforeach
             </div>
         </div>

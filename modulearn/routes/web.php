@@ -42,13 +42,14 @@ Route::get('login', 'UserController@loginView');
 Route::get('account', 'UserController@accountView');
 
 //Topics
+/*
 Route::get('/topics/create', function(){
     $user = Session::get('user');
     if (!isset($user)){
         return redirect('login');
     }
     return View::make('topics/create', ['user'=>$user]);
-});
+});*/
 
 
 //Errors

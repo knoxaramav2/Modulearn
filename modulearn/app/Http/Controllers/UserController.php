@@ -50,7 +50,10 @@ class UserController extends Controller
         if(Session::has('user'))
             return redirect('/');
 
-        return view('login');
+        $redirect = Input::get('redirect');
+        Log::info($redirect);
+
+        return view('login')->with(['redirect' => $redirect]);
     }
 
     public function loginAs(){

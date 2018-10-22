@@ -22,14 +22,8 @@ class ContentController extends Controller
         $user = Session::get('user');
 
         $entries = Content::all();
-        Log::info($entries);
 
-        $A = 'A';
-
-        Log::info("TEST");
-        Log::info($A);
-
-        return view('topics/topics')->with(array('A'=> $A, 'user'=>$user, 'entries'=>$entries));
+        return view('topics/topics')->with(array('user'=>$user, 'entries'=>$entries));
     }
 
     /**
@@ -40,6 +34,11 @@ class ContentController extends Controller
     public function create()
     {
         $user = Session::get('user');
+
+        if (!isset($user)){
+            return redirect('/login?redirect=topic/create');
+        }
+
         return view('topics/create')
             ->with(['user'=>$user])
             ->withInput();
@@ -99,7 +98,8 @@ class ContentController extends Controller
     public function show($id)
     {
         //
-        return $id;
+        $content = Content::where('id', $id)->first();
+        return view('topics/tutorial')->with(['content' => $content]);
     }
 
     /**

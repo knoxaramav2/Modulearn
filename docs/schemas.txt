@@ -1,10 +1,17 @@
-<users>
-id
-name
-email
-password
-isAdmin         |Note: Admin permission table instead?
+::contents
+id              unsigned
+content         binary
+dependents      unsigned    
+owner_id        unsigned    references user->id
+title           string
 
-<snippet>
-id
-subject
+::dependencies  (joint)
+id              unsigned
+dependency_id   unsigned    references contents->id
+dependent_id    unsigned    references contents->id
+
+::users
+id              unsigned
+name            string
+email           string
+isAdmin         boolean     note: move to auth table
