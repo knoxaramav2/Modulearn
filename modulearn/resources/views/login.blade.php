@@ -10,8 +10,6 @@
     <body>
         @include('partial/header')
         
-        <div>{{$passthrough}}</div>
-
         @if(isset($username))
 
         <div class="content">

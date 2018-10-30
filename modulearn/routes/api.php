@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/user/getList', "UserController@getList");
 
+Route::get('/topics/get_tutorial/{id}', "ContentController@getTutorial");

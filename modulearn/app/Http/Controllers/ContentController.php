@@ -9,6 +9,29 @@ use Illuminate\Http\Request;
 use Session;
 use Log;
 use Auth;
+use Markdown;
+
+class Report
+{
+    public $title;
+    public $deps;
+    public $id;
+    public $content;
+    public $owner;
+
+    public function __construct($t, $i, $d, $c, $o){
+        $title = $t;
+        $deps = $d;
+        $id = $i;
+        $content = $c;
+        $owner = $o;
+    }
+
+    public function toString()
+    {
+
+    }
+}
 
 class ContentController extends Controller
 {
@@ -40,8 +63,7 @@ class ContentController extends Controller
         }
 
         return view('topics/create')
-            ->with(['user'=>$user])
-            ->withInput();
+            ->with(['user'=>$user]);
     }
 
     /**
@@ -63,10 +85,16 @@ class ContentController extends Controller
         $title = $request['title'];
         $userid = $user['id'];
 
+        //TODO validate for nulls
+
         $deps = array();
 
+        //create dependency joints
         foreach ($_REQUEST as $key => $value){
             if (substr($key, 0, 4) === 'dep-'){
+
+                
+
                 array_push($deps, $value);
             }
         }
@@ -78,15 +106,17 @@ class ContentController extends Controller
         $entry->title = $title;
         $entry->content = $content;
         $entry->owner_id = $userid;
-        $entry->dependents = 0;//= count($deps);
+        $entry->dependents = 0;
 
         Log::info($entry);
 
         $entry->save();
 
+        //TODO update dependency counter on select valid items, or remove dependency counters
+
         //DB::insert('insert into content () values ()', );
 
-        return view('topics/topics')->with(['user'=>$user]);
+        return redirect('topics');
     }
 
     /**
@@ -97,9 +127,19 @@ class ContentController extends Controller
      */
     public function show($id)
     {
-        //
-        $content = Content::where('id', $id)->first();
-        return view('topics/tutorial')->with(['content' => $content]);
+        $user = Session::get('user');
+        $content = $this->getTutorial($id);
+
+        if(!isset($content)){
+            return view('errors/404');
+        }
+
+        Log::info($content);
+
+        //return $content;
+
+        return view('topics/tutorial')
+            ->with(['user'=>$user, 'content' => $content]);
     }
 
     /**
@@ -134,5 +174,18 @@ class ContentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /* API */
+
+    public function getTutorial($id){
+
+        $tutorial = Content::where('id', $id)->first();
+        $dependencies = Dependency::where('dependent_id', $id)->get();
+
+        $tutorial->dependencies = $dependencies;
+        $tutorial->content = Markdown::parse($tutorial->content);
+
+        return $tutorial;
     }
 }

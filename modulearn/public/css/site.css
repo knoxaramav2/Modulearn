@@ -489,6 +489,31 @@ table .element-td-dark{
     padding-left: 5%;
 }
 
+#tutorial-space{
+    width: 90%;
+    margin: auto;
+}
+
+#tutorial-space .tutorial-block{
+    border-left: 3px double gray;
+    border-right: 3px double gray;
+}
+
+.tutorial-block .tutorial-body{
+    width: 90%;
+    margin: auto;
+    /*color: white;*/
+}
+
+.tutorial-block span{
+    float: right;
+    padding-right: 10%;
+}
+
+.tutorial-block .tutorial-title{
+    text-align: center;
+}
+
 
 
 /* Component Themes */
