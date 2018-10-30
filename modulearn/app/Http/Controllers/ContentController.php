@@ -11,28 +11,6 @@ use Log;
 use Auth;
 use Markdown;
 
-class Report
-{
-    public $title;
-    public $deps;
-    public $id;
-    public $content;
-    public $owner;
-
-    public function __construct($t, $i, $d, $c, $o){
-        $title = $t;
-        $deps = $d;
-        $id = $i;
-        $content = $c;
-        $owner = $o;
-    }
-
-    public function toString()
-    {
-
-    }
-}
-
 class ContentController extends Controller
 {
     /**
@@ -89,16 +67,6 @@ class ContentController extends Controller
 
         $deps = array();
 
-        //create dependency joints
-        foreach ($_REQUEST as $key => $value){
-            if (substr($key, 0, 4) === 'dep-'){
-
-                
-
-                array_push($deps, $value);
-            }
-        }
-
         unset($key);
         unset($value);
 
@@ -108,9 +76,21 @@ class ContentController extends Controller
         $entry->owner_id = $userid;
         $entry->dependents = 0;
 
-        Log::info($entry);
+        //Log::info($entry);
 
         $entry->save();
+
+        //if entry saved, create dependency joints
+             //create dependency joints
+        foreach ($_REQUEST as $key => $value){
+            if (substr($key, 0, 4) === 'dep-'){
+                //array_push($deps, $value);
+                $dep = new Dependency;
+                $dep->dependency_id = $value;
+                $dep->dependent_id = $entry->id;
+                $dep->save();
+            }
+        }
 
         //TODO update dependency counter on select valid items, or remove dependency counters
 
