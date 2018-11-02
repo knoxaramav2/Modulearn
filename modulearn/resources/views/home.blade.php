@@ -21,17 +21,23 @@
         <div class='content'>
             <div class='content-item'>
                 <div>
-                    <h2>Trending Tutorials</h2>
+                    <h2>Recent Tutorials</h2>
                 </div>
+                @foreach ($submissions as $item)
+                    <a href='/topics/{{$item->id}}' class='home-content-link'>
+                        <div>{{$item->title}}</div>
+                    </a>
+                @endforeach
+            </div>
+            <div class='content-item'>
                 <div>
-
+                    <h2>Trending Tutorials</h2>
                 </div>
             </div>
             <div class='content-item'>
                 <div>
                     <h2>Trending Blog Posts</h2>
                 </div>
-                
             </div>
         </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Modulearn\Content;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,9 @@ Route::resources([
 ]);
 
 Route::get('/', function () {
-    $user = Session::get('user');//User::where('name', '=', "Test User")->first();
-    return View::make('home', ['user'=>$user]);
+    $user = Session::get('user');
+    $latest = Content::orderBy('id', 'desc')->take(5)->get();
+    return View::make('home', ['user'=>$user, 'submissions' => $latest]);
 });
 
 Route::get('/test', function(){

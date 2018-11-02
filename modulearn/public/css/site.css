@@ -195,21 +195,28 @@ table .element-td-dark{
     height: 100%;
     margin: auto;
     padding: 10px;
-    background-color: red;
 }
 
 .container-left{
     height: 100%;
     width: 50%;
     float: left;
-    background-color: blue;
 }
 
 .container-right{
     height: 100%;
     width: 50%;
     float: right;
-    background-color:green;
+}
+
+.container-right h1,h2,h3{
+    text-align: center;
+}
+
+.container-right div{
+    margin: 20px 0;
+    padding: 10px;
+    background-color: lightgray;
 }
 
 /* Common */
@@ -360,6 +367,11 @@ table .element-td-dark{
     background-color: #cc451c;
     flex: 100%;
     order: 3;
+}
+
+.home-content-link div{
+    background-color: lightgray;
+    margin: 5px;
 }
 
 /* Account */

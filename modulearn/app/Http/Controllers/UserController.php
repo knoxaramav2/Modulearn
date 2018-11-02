@@ -3,6 +3,7 @@
 namespace Modulearn\Http\Controllers;
 
 use Modulearn\User;
+use Modulearn\Content;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -107,12 +108,13 @@ class UserController extends Controller
     public function accountView(){
 
         $user = Session::get('user');
+        $submitted = Content::where("owner_id", $user->id)->get();
 
         if(!isset($user)){
             return redirect('error/No active user session');
         }
 
-        return view('account', ['user'=>$user]);
+        return view('account', ['user'=>$user, 'submitted' => $submitted]);
     }
 
     public function getList(Request $request){

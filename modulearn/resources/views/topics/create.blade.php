@@ -14,6 +14,9 @@
     </head>
     <body onload='ready();'>
         @include('partial/header')
+        @include('partial/md-editor')
+
+        <!--
         <div id='tutorial-editor'>
             <div id='tutorial-editor-main'>
                 <form action='/topics' id='tutorial-form' method='post'>
@@ -52,12 +55,17 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         
     </body>
     <script>
 
         var simplemde;
+
+        document.getElementById('tutorial-form').onkeypress = function(e){
+            let kp = e.charCode || e.keyCode;
+            if (kp == 13) {e.preventDefault();} 
+        }
 
         function prepareSubmitData(){
             let md = document.getElementById("input-markdown");
