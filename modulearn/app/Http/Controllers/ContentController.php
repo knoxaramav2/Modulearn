@@ -114,6 +114,7 @@ class ContentController extends Controller
             return view('errors/404');
         }
 
+        Log::info(">>>>>>>>>>>>>>>");
         Log::info($content);
 
         return view('topics/tutorial')
@@ -149,7 +150,11 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Log::info($request);
+
+        
+
+        return "A";
     }
 
     /**

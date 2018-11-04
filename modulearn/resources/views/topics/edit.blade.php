@@ -29,7 +29,11 @@
                 let depObj = JSON.parse(Http.responseText);
                 title.value = depObj.title;
                 smde.value(depObj.content);
-                console.log(depObj.content);
+                console.log(depObj);
+
+                for(let d of depObj.dependencies){
+                    addDependency(d.id);
+                }
             }                
         }
     }

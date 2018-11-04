@@ -1,0 +1,10 @@
+Security-------------
+    [] Validate dependencies against recursive, non-existent dependencies
+    [] XSS protection
+    [] Validate session on edit url
+
+Functionality--------
+    [] Support images in MD, DB
+
+Process--------------
+    [] Build tests, move to TDD

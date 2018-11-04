@@ -6,7 +6,7 @@
 <body  onload='ready();'>
     <div id='tutorial-editor'>
             <div id='tutorial-editor-main'>
-                <form action='/topics' id='tutorial-form' method={{isset($alt_action)?$alt_action:"POST"}}>
+                <form action='/topics/{{$content->id}}' id='tutorial-form' method={{isset($alt_action)?$alt_action:"POST"}}>
                     {{ csrf_field() }}
                     <input type='hidden' id='input-markdown' name='input-markdown'>
                     <div>
@@ -86,9 +86,13 @@
             });
     }
 
-    function addDependency(){
-        let idDiv = document.getElementById('dependency-id');
-        let id = idDiv.value;
+    function addDependency(id){
+
+        if (id === undefined){
+            let idDiv = document.getElementById('dependency-id');
+            id = idDiv.value;
+        }
+        
         if (id.length === 0){
             return;
         }
@@ -108,7 +112,9 @@
         div.appendChild(button);
         depList.appendChild(div);
 
-        idDiv.value='';
+        if (id === undefined){
+            idDiv.value='';
+        }
     }
 
 </script>
