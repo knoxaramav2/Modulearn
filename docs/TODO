@@ -8,3 +8,6 @@ Functionality--------
 
 Process--------------
     [] Build tests, move to TDD
+
+Quality--------------
+    [] Replace isset checks with validations

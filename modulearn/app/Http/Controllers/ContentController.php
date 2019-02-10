@@ -52,6 +52,7 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info("STORE");
         Log::info($request);
         $user = Session::get('user');
 
@@ -114,7 +115,6 @@ class ContentController extends Controller
             return view('errors/404');
         }
 
-        Log::info(">>>>>>>>>>>>>>>");
         Log::info($content);
 
         return view('topics/tutorial')
@@ -129,8 +129,12 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
-        //
         $user = Session::get('user');
+
+        if (!isset($user)){
+            return view('errors/404'); 
+        }
+
         $content = $this->getTutorial($id);
 
         if(!isset($content)){
@@ -150,11 +154,37 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Log::info($request);
+        $user = Session::get('user');
 
+        //Log::info($id);
+        //Log::info($user->id);
+
+        if (!isset($user)){
+            return view('errors/404');
+        }
         
+        $tutorial = Content::where([
+            ['id',$id],
+            ['owner_id', $user->id]
+            ])->get();
 
-        return "A";
+        if (!isset($tutorial)){
+            return view('errors/404');
+        }
+        
+        $content = $request['input-markdown'];
+
+        foreach ($_REQUEST as $key => $value){
+            if (substr($key, 0, 4) === 'dep-'){
+                Log::info($value);
+                
+            }
+        }
+
+        Log::info($request);
+        Log::info($id);
+
+        return redirect()->back();
     }
 
     /**

@@ -6,8 +6,12 @@
 <body  onload='ready();'>
     <div id='tutorial-editor'>
             <div id='tutorial-editor-main'>
-                <form action='/topics/{{$content->id}}' id='tutorial-form' method={{isset($alt_action)?$alt_action:"POST"}}>
+                <form action='/topics/{{$content->id}}' id='tutorial-form' method="POST">
                     {{ csrf_field() }}
+                    @if (isset($alt_action))
+                        {{ method_field($alt_action) }}
+                    @endif
+
                     <input type='hidden' id='input-markdown' name='input-markdown'>
                     <div>
                         <input type='text' placeholder="Enter a title" name='title'/>

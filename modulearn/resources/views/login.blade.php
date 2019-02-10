@@ -29,18 +29,24 @@
                 @endforeach
             @endif
 
-            <div class="login">
-                <h3>Login</h3>
-                <form method="post" action="/login?">
-                    {{ csrf_field() }}
-                    <label>Username</label>
-                    <input type="text" placeholder="Enter Username" id="login-username" name="name">
-                    <br/>
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter password" id="login-password" name="password">
-                    <br/><br/>
-                    <input type="submit" class="form-submit" value="Login" name="login" id="login">
-                </form>
+            <div class="collapsible">
+                
+                <div class="login">
+                    <div class="collapse-control">
+                        <button>(>)</button>
+                    </div>
+                    <h3>Login</h3>
+                    <form method="post" action="/login?">
+                        {{ csrf_field() }}
+                        <label>Username</label>
+                        <input type="text" placeholder="Enter Username" id="login-username" name="name">
+                        <br/>
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter password" id="login-password" name="password">
+                        <br/><br/>
+                        <input type="submit" class="form-submit" value="Login" name="login" id="login">
+                    </form>
+                </div>
             </div>
 
             <div class="spacer"></div>

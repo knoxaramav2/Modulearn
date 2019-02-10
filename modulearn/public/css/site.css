@@ -64,6 +64,18 @@ a{
 
 /* Util */
 
+.collapsible{
+    width:100%;
+}
+
+.collapsible .collapse-control{
+    float: right;
+}
+
+.collapsible .collapse-controll button{
+
+}
+
 .tooltip-parent{
     position: relative;
 }
