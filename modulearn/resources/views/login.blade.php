@@ -60,29 +60,31 @@
                 @endforeach
             @endif
 
-            <div class="login">
-                <h3>Sign-Up</h3>
-                <form method="post" action="users">
-                    {{ csrf_field() }}
-                    <label>Username</label>
-                    <input type="text" placeholder="Enter Username" id="signup-username" name="name">
-                    <br/>
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter password" id="signup-password" name="password">
-                    <br/>
-                    <div id="password-toggle-container">
-                        <label>Toggle Password</label>
-                        <label class="switch">
-                            <input type="checkbox" id="show-pass" onclick="toggle_password_visibility()">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <br/>
-                    <label>Email</label>
-                    <input type="text" placeholder="Enter e-mail" id="email" name="email">
-                    <br/><br/>
-                    <input type="submit" class="form-submit" value="Create Account" name="signup" id="signup">
-                </form>
+            <div class="collapsible">
+                <div class="login">
+                    <h3>Sign-Up</h3>
+                    <form method="post" action="users">
+                        {{ csrf_field() }}
+                        <label>Username</label>
+                        <input type="text" placeholder="Enter Username" id="signup-username" name="name">
+                        <br/>
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter password" id="signup-password" name="password">
+                        <br/>
+                        <div id="password-toggle-container">
+                            <label>Toggle Password</label>
+                            <label class="switch">
+                                <input type="checkbox" id="show-pass" onclick="toggle_password_visibility()">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <br/>
+                        <label>Email</label>
+                        <input type="text" placeholder="Enter e-mail" id="email" name="email">
+                        <br/><br/>
+                        <input type="submit" class="form-submit" value="Create Account" name="signup" id="signup">
+                    </form>
+                </div>
             </div>
         </div>
 
