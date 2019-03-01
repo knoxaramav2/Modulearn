@@ -6,7 +6,7 @@
 <body  onload='ready();'>
     <div id='tutorial-editor'>
             <div id='tutorial-editor-main'>
-                <form action='/topics/{{$content->id}}' id='tutorial-form' method="POST">
+                <form action='/topics/{{$content->id ?? "new"}}' id='tutorial-form' method="POST">
                     {{ csrf_field() }}
                     @if (isset($alt_action))
                         {{ method_field($alt_action) }}
@@ -24,6 +24,12 @@
             </div>
             <div id='tutorial-editor-toolbar'>
                 <div class='tutorial-editor-tool'>
+                <div class='gadget-panel'>
+                        <div class='gadget-container gadget-right'>
+                            <span>Difficulty</span>
+                            <input type='range' min='1' max='10' value='1' oninput="update_slider(this.value);";>
+                        </div>
+                    </div>
                     <div id='dependency-container'>
                         <div>
                             <h3>Add pre-requisites</h3>
@@ -51,6 +57,7 @@
 <script>
 
     var simplemde;
+    var difficulty = 1;
 
     function getMdEditor(){
         return simplemde;
@@ -119,6 +126,10 @@
         if (id === undefined){
             idDiv.value='';
         }
+    }
+
+    function update_slider(level){
+        value = level;
     }
 
 </script>

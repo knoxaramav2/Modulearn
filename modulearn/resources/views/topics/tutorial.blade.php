@@ -15,7 +15,6 @@
                 <span>Content Adjuster</span>
                 <input type='range' min='1' max='10' value='7' oninput="update_slider(this.value);";>
             </div>
-            
         </div>
 
         <section id='tutorial-space'>
