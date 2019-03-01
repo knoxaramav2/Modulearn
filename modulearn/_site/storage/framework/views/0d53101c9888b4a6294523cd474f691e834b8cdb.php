@@ -1,31 +1,23 @@
 <!doctype html>
 
-<html lang="{{ app()->getLocale() }}">
+<html lang="<?php echo e(app()->getLocale()); ?>">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Modulearn - {{$content->title}}</title>
+        <title>Modulearn - <?php echo e($content->title); ?></title>
     </head>
-    <body onload="load_next_dependency({{$content->dependencies}});">
-        @include('partial/header')
-
-        <div class='gadget-panel'>
-            <div class='gadget-container gadget-right'>
-                <span>Content Adjuster</span>
-                <input type='range' min='1' max='10' value='7' oninput="update_slider(this.value);";>
-            </div>
-            
-        </div>
+    <body onload="load_next_dependency(<?php echo e($content->dependencies); ?>);">
+        <?php echo $__env->make('partial/header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
         <section id='tutorial-space'>
             <div class='tutorial-block'>
                 <div class='tutorial-title'>
-                    <span>ID : {{$content->id}}</span>
-                    <h1>{{$content->title}}</h1>
+                    <span>ID : <?php echo e($content->id); ?></span>
+                    <h1><?php echo e($content->title); ?></h1>
                 </div>
                 <div class='tutorial-body'>
-                    @markdown($content->content)
+                    <?php echo app('Indal\Markdown\Parser')->parse($content->content); ?>
                 </div>
             </div>
         </section>
@@ -33,9 +25,6 @@
 </html>
 
 <script>
-
-    var lookup = [];
-
 
     function appendDepContent(depObj){
 
@@ -53,8 +42,6 @@
         tutorial_block.classList.add('tutorial-block');
         tutorial_title.classList.add('tutorial-title');
         tutorial_body.classList.add('tutorial-body');
-        tutorial_block.setAttribute('id', depObj.id);
-        tutorial_block.setAttribute('level', depObj.id);//TODO replace with diff Level
 
         //assign content
         tutorial_body.innerHTML = depObj.content;
@@ -68,15 +55,6 @@
         tutorial_block.appendChild(tutorial_title);
         tutorial_block.appendChild(tutorial_body);
         tutorial_space.prepend(tutorial_block);
-
-        let ref = {
-            id : depObj.id,
-            payload : tutorial_block,
-            level : depObj.id//TODO replace with diff Level
-        }
-
-        lookup.push(ref);
-        console.log(ref);
     }
 
     function load_next_dependency(deps){
@@ -110,23 +88,5 @@
                 }                
             }
         });
-    }
-
-    function update_slider(level){
-        toggle_dependency(level);
-    }
-
-    function toggle_dependency(level){
-
-        for (let elt of lookup){
-            console.log(elt.level + '<' + level);
-            if (level < elt.level){
-                elt.payload.hidden = true;
-                //console.log("Hide " + elt.id);
-            } else {
-                elt.payload.hidden = false;
-                //console.log("Show " + elt.id);
-            }
-        }
     }
 </script>

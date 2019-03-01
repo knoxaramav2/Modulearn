@@ -1,0 +1,13 @@
+body{
+    background-color: gray;
+    color:white;
+    text-align: center;
+}
+
+span{
+    position: absolute;
+    top: 50%;
+    height: 10em;
+    font-size: xx-large;
+    font-weight: 900;
+}

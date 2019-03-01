@@ -538,19 +538,10 @@ table .element-td-dark{
     text-align: center;
 }
 
+
+
 /* Component Themes */
-.gadget-panel{
-    width:90%;
-    margin:auto;
-    display: flex;
-}
 
-.gadget-panel .gadget-container{
-
-}
-
-.gadget-container.gadget-right{
-}
 
 
 

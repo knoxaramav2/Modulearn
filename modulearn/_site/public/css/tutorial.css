@@ -1,0 +1,102 @@
+/* 
+
+    Specific for tutorial rendering
+    !important tags allowed
+
+*/
+
+.CodeMirror-line{/*Override from simplemde.css */
+    font-family: 'Trebuchet MS', 'Courier', 'Helvetica', 'Arial', 'Comic Sans MS' !important;
+}
+
+/* Editor */
+#tutorial-editor input{
+    font-size: large;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#tutorial-editor{
+    width: 95%;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#tutorial-editor-main{
+    width: 80%;
+    float: left;
+}
+
+form input[type='submit']{
+    max-width: 40%;
+    float:right;
+    border: 2px groove;
+    height: 50px;
+}
+
+#tutorial-editor-toolbar{
+    border-left: solid black 1px;
+    width: 100%;
+    max-width: 20%;
+    min-width: 200px;
+    margin-left: 1%;
+    padding-right: 8px;
+}
+
+#dependency-container{
+    width: 100%;
+    margin-left: 2%;
+}
+
+#add-dep-btn button{
+    border: none;
+    width: 100%;
+    padding: 5px;
+    background-repeat: no-repeat;
+    line-height: 30px;
+}
+
+#add-dep-btn button img{
+    float: right;
+}
+
+#dependency-list .dependency-item{
+ background-color: lightgray;
+ margin-top: 5px;
+ height: 28px;
+ padding-left: 8px;
+ line-height: 25px;
+}
+
+#dependency-list button{
+    float: right;
+    font-size: large;
+    background: none;
+    border: none;
+    font-weight: 900;
+    border-left: 1px solid gray;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1400px){
+    #tutorial-editor input{
+        width: 99%;
+    }
+}
+
+@media only screen and (max-width: 640px){
+    #tutorial-editor{
+        flex-direction: column;
+    }
+
+    #tutorial-editor-toolbar{
+        max-width: 100%;
+        width: 100%;
+    }
+}

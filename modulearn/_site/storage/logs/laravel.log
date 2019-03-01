@@ -1,0 +1,112 @@
+[2018-11-05 03:25:51] local.INFO: 5  
+[2018-11-05 03:25:51] local.INFO: array (
+  '_token' => 'p0CwyxzMPAMROimO3ecZzBPB7Y6lhj08sxXL9AKU',
+  '_method' => 'PUT',
+  'input-markdown' => '# Doing
+## Some
+#### Refactoring',
+  'title' => 'Refactor Post',
+  'dep-0' => '5',
+)  
+[2018-11-05 03:25:51] local.INFO: 8  
+[2019-01-11 09:24:40] local.INFO: {"id":8,"created_at":"2018-11-02 18:19:43","updated_at":"2018-11-02 18:19:43","content":"<h1>Doing<\/h1>
+<h2>Some<\/h2>
+<h4>Refactoring<\/h4>","dependents":"0","owner_id":"3","title":"Refactor Post","dependencies":[{"id":5,"dependency_id":"7","dependent_id":"8"}]}  
+[2019-01-11 09:38:29] local.INFO: {"id":4,"created_at":"2018-10-30 01:20:59","updated_at":"2018-10-30 01:20:59","content":"<h1>some test<\/h1>
+<h2>might as well test some<\/h2>
+<h4>other stuff<\/h4>","dependents":"0","owner_id":"3","title":"Test title omega","dependencies":[]}  
+[2019-01-11 09:38:37] local.INFO: {"id":5,"created_at":"2018-10-30 01:21:43","updated_at":"2018-10-30 01:21:43","content":"<h1>asdasdasdas<\/h1>
+<p>asdasdasdasdasd<\/p>","dependents":"0","owner_id":"3","title":"Give it another try","dependencies":[{"id":3,"dependency_id":"2","dependent_id":"5"}]}  
+[2019-01-11 09:38:46] local.INFO: {"id":6,"created_at":"2018-10-30 02:14:59","updated_at":"2018-10-30 02:14:59","content":"<h1>Variables in C<\/h1>
+<h3>Primitives<\/h3>
+<table>
+<thead>
+<tr>
+<th>Keyword<\/th>
+<th>Type<\/th>
+<th>Size<\/th>
+<\/tr>
+<\/thead>
+<tbody>
+<tr>
+<td>int<\/td>
+<td>Integer<\/td>
+<td>4 bytes<\/td>
+<\/tr>
+<tr>
+<td>unsigned<\/td>
+<td>unsigned integer<\/td>
+<td>4 bytes<\/td>
+<\/tr>
+<tr>
+<td>short<\/td>
+<td>short integer<\/td>
+<td>2 bytes<\/td>
+<\/tr>
+<tr>
+<td>unsigned short<\/td>
+<td>unsigned short integer<\/td>
+<td>2 bytes<\/td>
+<\/tr>
+<tr>
+<td>char<\/td>
+<td>character<\/td>
+<td>1 bytes<\/td>
+<\/tr>
+<tr>
+<td>long<\/td>
+<td>long integer<\/td>
+<td>8 bytes<\/td>
+<\/tr>
+<tr>
+<td>float<\/td>
+<td>floating point<\/td>
+<td>4 bytes<\/td>
+<\/tr>
+<tr>
+<td>double<\/td>
+<td>double precision floating point<\/td>
+<td>8 bytes<\/td>
+<\/tr>
+<\/tbody>
+<\/table>","dependents":"0","owner_id":"3","title":"C Primitives","dependencies":[]}  
+[2019-01-11 09:38:52] local.INFO: {"id":7,"created_at":"2018-10-30 02:20:12","updated_at":"2018-10-30 02:20:12","content":"<p>To extend on primitive types, it is also possible to create custom types called <strong>structs<\/strong><\/p>
+<p><strong>Structs<\/strong> are data structures that can hold multiple sets of data<\/p>
+<p>For example: Using the <code>typedef<\/code> keyword below<\/p>
+<pre><code>typedef struct Person{
+    char gender;
+    char * name;
+    unsigned age;
+}StructName;<\/code><\/pre>
+<p>This creates a data structure representing a human with attributes <code>gender, name, and age.<\/code><\/p>","dependents":"0","owner_id":"3","title":"C Structs","dependencies":[{"id":4,"dependency_id":"6","dependent_id":"7"}]}  
+[2019-01-11 09:38:57] local.INFO: {"id":8,"created_at":"2018-11-02 18:19:43","updated_at":"2018-11-02 18:19:43","content":"<h1>Doing<\/h1>
+<h2>Some<\/h2>
+<h4>Refactoring<\/h4>","dependents":"0","owner_id":"3","title":"Refactor Post","dependencies":[{"id":5,"dependency_id":"7","dependent_id":"8"}]}  
+[2019-02-10 09:24:47] local.INFO: {"id":4,"created_at":"2018-10-30 01:20:59","updated_at":"2018-10-30 01:20:59","content":"<h1>some test<\/h1>
+<h2>might as well test some<\/h2>
+<h4>other stuff<\/h4>","dependents":"0","owner_id":"3","title":"Test title omega","dependencies":[]}  
+[2019-02-10 09:24:56] local.INFO: {"id":5,"created_at":"2018-10-30 01:21:43","updated_at":"2018-10-30 01:21:43","content":"<h1>asdasdasdas<\/h1>
+<p>asdasdasdasdasd<\/p>","dependents":"0","owner_id":"3","title":"Give it another try","dependencies":[{"id":3,"dependency_id":"2","dependent_id":"5"}]}  
+[2019-02-10 09:25:09] local.INFO: {"id":7,"created_at":"2018-10-30 02:20:12","updated_at":"2018-10-30 02:20:12","content":"<p>To extend on primitive types, it is also possible to create custom types called <strong>structs<\/strong><\/p>
+<p><strong>Structs<\/strong> are data structures that can hold multiple sets of data<\/p>
+<p>For example: Using the <code>typedef<\/code> keyword below<\/p>
+<pre><code>typedef struct Person{
+    char gender;
+    char * name;
+    unsigned age;
+}StructName;<\/code><\/pre>
+<p>This creates a data structure representing a human with attributes <code>gender, name, and age.<\/code><\/p>","dependents":"0","owner_id":"3","title":"C Structs","dependencies":[{"id":4,"dependency_id":"6","dependent_id":"7"}]}  
+[2019-02-10 09:51:44] local.INFO:   
+[2019-02-10 09:52:08] local.INFO:   
+[2019-02-10 09:58:13] local.INFO:   
+[2019-02-10 10:00:04] local.INFO:   
+[2019-02-10 10:00:42] local.INFO:   
+[2019-02-10 10:01:05] local.INFO:   
+[2019-02-10 10:02:16] local.INFO:   
+[2019-02-10 10:02:59] local.INFO:   
+[2019-02-10 10:03:32] local.INFO:   
+[2019-02-10 10:03:53] local.INFO:   
+[2019-02-10 10:04:38] local.INFO:   
+[2019-02-10 10:05:40] local.INFO:   
+[2019-02-13 05:06:22] local.INFO:   
+[2019-02-13 05:10:39] local.INFO:   

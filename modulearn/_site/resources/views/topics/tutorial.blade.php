@@ -10,14 +10,6 @@
     <body onload="load_next_dependency({{$content->dependencies}});">
         @include('partial/header')
 
-        <div class='gadget-panel'>
-            <div class='gadget-container gadget-right'>
-                <span>Content Adjuster</span>
-                <input type='range' min='1' max='10' value='7' oninput="update_slider(this.value);";>
-            </div>
-            
-        </div>
-
         <section id='tutorial-space'>
             <div class='tutorial-block'>
                 <div class='tutorial-title'>
@@ -33,9 +25,6 @@
 </html>
 
 <script>
-
-    var lookup = [];
-
 
     function appendDepContent(depObj){
 
@@ -53,8 +42,6 @@
         tutorial_block.classList.add('tutorial-block');
         tutorial_title.classList.add('tutorial-title');
         tutorial_body.classList.add('tutorial-body');
-        tutorial_block.setAttribute('id', depObj.id);
-        tutorial_block.setAttribute('level', depObj.id);//TODO replace with diff Level
 
         //assign content
         tutorial_body.innerHTML = depObj.content;
@@ -68,15 +55,6 @@
         tutorial_block.appendChild(tutorial_title);
         tutorial_block.appendChild(tutorial_body);
         tutorial_space.prepend(tutorial_block);
-
-        let ref = {
-            id : depObj.id,
-            payload : tutorial_block,
-            level : depObj.id//TODO replace with diff Level
-        }
-
-        lookup.push(ref);
-        console.log(ref);
     }
 
     function load_next_dependency(deps){
@@ -110,23 +88,5 @@
                 }                
             }
         });
-    }
-
-    function update_slider(level){
-        toggle_dependency(level);
-    }
-
-    function toggle_dependency(level){
-
-        for (let elt of lookup){
-            console.log(elt.level + '<' + level);
-            if (level < elt.level){
-                elt.payload.hidden = true;
-                //console.log("Hide " + elt.id);
-            } else {
-                elt.payload.hidden = false;
-                //console.log("Show " + elt.id);
-            }
-        }
     }
 </script>
