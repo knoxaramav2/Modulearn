@@ -63,6 +63,7 @@ class ContentController extends Controller
         $content = $request['input-markdown'];
         $title = $request['title'];
         $userid = $user['id'];
+        $difficulty = $request['difficulty'];
 
         //TODO validate for nulls
 
@@ -76,6 +77,7 @@ class ContentController extends Controller
         $entry->content = $content;
         $entry->owner_id = $userid;
         $entry->dependents = 0;
+        $entry->difficulty= $difficulty;
 
         //Log::info($entry);
 
@@ -166,7 +168,7 @@ class ContentController extends Controller
         $tutorial = Content::where([
             ['id',$id],
             ['owner_id', $user->id]
-            ])->get();
+            ])->first();
 
         if (!isset($tutorial)){
             return view('errors/404');
@@ -177,12 +179,22 @@ class ContentController extends Controller
         foreach ($_REQUEST as $key => $value){
             if (substr($key, 0, 4) === 'dep-'){
                 Log::info($value);
-                
             }
         }
 
         Log::info($request);
         Log::info($id);
+
+        //update data and save
+        $content = $request['input-markdown'];
+        $title = $request['title'];
+        $difficulty = $request['difficulty'];
+
+        $tutorial->content = $content;
+        $tutorial->title = $title;
+        $tutorial->difficulty= $difficulty;
+
+        $tutorial->save();
 
         return redirect()->back();
     }

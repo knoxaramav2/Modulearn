@@ -6,13 +6,14 @@
 <body  onload='ready();'>
     <div id='tutorial-editor'>
             <div id='tutorial-editor-main'>
-                <form action='/topics/{{$content->id ?? "new"}}' id='tutorial-form' method="POST">
+                <form action='/topics/{{$content->id ?? ""}}' id='tutorial-form' method="POST">
                     {{ csrf_field() }}
                     @if (isset($alt_action))
                         {{ method_field($alt_action) }}
                     @endif
 
                     <input type='hidden' id='input-markdown' name='input-markdown'>
+                    <input type='hidden' id='diff-setting' name='difficulty'>
                     <div>
                         <input type='text' placeholder="Enter a title" name='title'/>
                     </div>
@@ -26,8 +27,8 @@
                 <div class='tutorial-editor-tool'>
                 <div class='gadget-panel'>
                         <div class='gadget-container gadget-right'>
-                            <span>Difficulty</span>
-                            <input type='range' min='1' max='10' value='1' oninput="update_slider(this.value);";>
+                            <span>Difficulty</span> <span id='diff-display'></span>
+                            <input id='diff-slider' type='range' min='1' max='10' value={{$content->level ?? 3}} oninput="update_slider(this.value);";>
                         </div>
                     </div>
                     <div id='dependency-container'>
@@ -58,6 +59,8 @@
 
     var simplemde;
     var difficulty = 1;
+    var diffSlider;
+    var diffDisplay;
 
     function getMdEditor(){
         return simplemde;
@@ -74,6 +77,7 @@
 
         let deps = document.getElementsByClassName('dependency-item');
         let form = document.getElementById('tutorial-form');
+        let diff = document.getElementById('diff-setting').value=diffSlider.value;
 
         console.log(deps);
 
@@ -95,6 +99,9 @@
             tabSize: 4,
             autofocus: true
             });
+        diffSlider = document.getElementById('diff-slider');
+        diffDisplay = document.getElementById('diff-display');
+        diffDisplay.textContent='  ( '+diffSlider.value+' )';
     }
 
     function addDependency(id){
@@ -130,6 +137,7 @@
 
     function update_slider(level){
         value = level;
+        diffDisplay.textContent='  ( '+level+' )';
     }
 
 </script>

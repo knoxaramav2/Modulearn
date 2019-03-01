@@ -29,6 +29,8 @@
                 let depObj = JSON.parse(Http.responseText);
                 title.value = depObj.title;
                 smde.value(depObj.content);
+                document.getElementById('diff-slider').value=depObj.difficulty;
+                update_slider(depObj.difficulty);
                 console.log(depObj);
 
                 for(let d of depObj.dependencies){
