@@ -4,6 +4,7 @@ namespace Modulearn\Http\Controllers;
 
 use Modulearn\User;
 use Modulearn\Content;
+use Modulearn\Favorite;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -66,7 +67,7 @@ class UserController extends Controller
         );
 
         $messages = array(
-            'required' => 'Please fill in the :attribute field'
+            'required' => 'Please fill in the attribute field'
         );
 
         $validator = Validator::make(Input::all(), $validate_rules, $messages);
@@ -108,6 +109,9 @@ class UserController extends Controller
     public function accountView(){
 
         $user = Session::get('user');
+        $favorites = Favorite::get();
+
+        Log::info($favorites);
 
         if(!isset($user)){
             return redirect('error/No active user session');
@@ -115,7 +119,7 @@ class UserController extends Controller
 
         $submitted = Content::where("owner_id", $user->id)->get();
 
-        return view('account', ['user'=>$user, 'submitted' => $submitted]);
+        return view('account', ['user'=>$user, 'submitted' => $submitted, 'favorites' => $favorites]);
     }
 
     public function getList(Request $request){

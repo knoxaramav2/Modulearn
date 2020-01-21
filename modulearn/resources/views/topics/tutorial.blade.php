@@ -42,7 +42,15 @@
         adjuster=document.getElementById('adjuster');
         adjusterContent=document.getElementById('adjuster-content');
         maxDiff=initDiff;
+
+        adjustSlider();
         loadDependencyAsync(dependencies);
+    }
+
+    function adjustSlider(){
+        adjuster.max=maxDiff;
+        adjuster.value=maxDiff;
+        adjusterContent.innerHTML = "Difficulty Adjuster ("+adjuster.value+")";
     }
 
     function appendDepContent(depObj){
@@ -91,9 +99,6 @@
 
     function loadDependencyAsync(deps){
         deps.forEach(dep => {
-            //console.log(dep.dependency_id);
-            //console.log(dep.dependent_id);
-
             Http = new XMLHttpRequest();
             Http.open("GET", "/api/topics/get_tutorial/"+dep.dependency_id);
             Http.send();
@@ -103,23 +108,13 @@
             Http.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200){
                     let depObj = JSON.parse(Http.responseText);
-                    
-                    //console.log(depObj);
-
                     appendDepContent(depObj);
-
                     
                     if (depObj.dependencies.length > 0){
-                        //depQueue.push(depObj.dependencies);
-                        //console.log(depQueue);
-
                         loadDependencyAsync(depObj.dependencies);
                     }
 
-                    //Update slider values
-                    adjuster.max=maxDiff;
-                    adjuster.value=maxDiff;
-                    adjusterContent.innerHTML = "Difficulty Adjuster ("+adjuster.value+")";
+                    adjustSlider();
 
                     console.log('#' + maxDiff);
                 }                
