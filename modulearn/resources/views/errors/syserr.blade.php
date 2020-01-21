@@ -5,14 +5,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{asset('css/err.css')}}" rel="stylesheet">
-        <title>404</title>
+        <title>Error</title>
     </head>
-    <body class="err-body">
+    <body>
         @include('partial/header')
-        <div class="err-bg">
-            <span>This page cannot be found :/</span>
-        </div>
-        
+        <span>{{$msg}}</span>
     </body>
 
 </html>

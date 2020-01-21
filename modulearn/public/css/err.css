@@ -1,13 +1,18 @@
-body{
-    background-color: gray;
+.err-body{
+
     color:white;
+}
+
+.err-bg{
+    
     text-align: center;
 }
 
-span{
+.err-bg span{
     position: absolute;
     top: 50%;
     height: 10em;
     font-size: xx-large;
     font-weight: 900;
+    color:black;
 }

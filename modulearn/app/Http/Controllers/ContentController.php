@@ -217,6 +217,10 @@ class ContentController extends Controller
         $tutorial = Content::where('id', $id)->first();
         $dependencies = Dependency::where('dependent_id', $id)->get();
 
+        if (!isset($tutorial)){
+            return abort(404);
+        } 
+
         $tutorial->dependencies = $dependencies;
 
         if(isset($raw_md) && $raw_md == false){
