@@ -29,7 +29,6 @@
                             <button >
                                 <a href='/topics/{{$item->id}}/edit'>{{$item->title}}</a>
                             </button>
-                            <!--<button>Edit</button>-->
                         </div>
                         @endforeach
                     </div>
@@ -45,7 +44,6 @@
                             <button >
                                 <a href='/topics/{{$item->id}}/edit'>{{$item->title}}</a>
                             </button>
-                            <!--<button>Edit</button>-->
                         </div>
                         @endforeach
                     </div>
