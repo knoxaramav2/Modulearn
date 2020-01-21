@@ -19,7 +19,8 @@ a{
 }
 
 .content{
-    width: 100%;
+    /*float:right;*/
+    width: 50%;
     margin:auto;
     text-align: center;
 }
@@ -215,9 +216,15 @@ table .element-td-dark{
     float: left;
 }
 
+.container-left div{
+    /*margin: 20px 0;*/
+    padding: 5px;
+    /*background-color: lightgray;*/
+}
+
 .container-right{
     height: 100%;
-    width: 50%;
+    width: 48%;
     float: right;
 }
 
@@ -226,9 +233,9 @@ table .element-td-dark{
 }
 
 .container-right div{
-    margin: 20px 0;
-    padding: 10px;
-    background-color: lightgray;
+    /*margin: 20px 0;*/
+    padding: 5px;
+    /*background-color: lightgray;*/
 }
 
 /* Common */
@@ -280,6 +287,33 @@ table .element-td-dark{
     text-decoration: none;
     margin: 4px 15px 4px 15px;
     font-weight:bold;
+}
+
+/* Account */
+.btn-submit{
+    width:100%;
+    background-color:green;
+    color:white;
+    border-radius: 10px;
+    height: 50px;
+    font-size: x-large;
+}
+
+.btn-vlist div{
+    margin: 5px 0px;
+}
+
+.btn-vlist div button{
+    width: 90%;
+    height: 30px;
+}
+
+.favorites-list{
+    background-color: lightgray;
+}
+
+.favorites-list button{
+
 }
 
 /* Forms */
@@ -572,5 +606,9 @@ table .element-td-dark{
     .home-header{
         background-image: url("/images/banner_600.png");
         height: 200px;
+    }
+
+    .content{
+        width:100%;
     }
 }

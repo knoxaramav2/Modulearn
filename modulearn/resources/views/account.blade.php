@@ -19,9 +19,14 @@
                         <a href="">Edit</a>
                     </div>
                     <div>
+                        <button>Change Account Settings</button>
+                    </div>
+                    <div class='btn-vlist'>
+                        <br/>
+                        <div><span>Favorites</span></div>
                         @foreach ($submitted as $item)
                         <div>
-                            <button>
+                            <button >
                                 <a href='/topics/{{$item->id}}/edit'>{{$item->title}}</a>
                             </button>
                             <!--<button>Edit</button>-->
@@ -31,7 +36,19 @@
                 </div>
                 <div class='container-right'>
                     <h2>Submissions</h2>
-                    
+                    <div>
+                        <button class='btn-submit'>Make a Submission!</button>
+                    </div>
+                    <div class='btn-vlist'>
+                        @foreach ($submitted as $item)
+                        <div>
+                            <button >
+                                <a href='/topics/{{$item->id}}/edit'>{{$item->title}}</a>
+                            </button>
+                            <!--<button>Edit</button>-->
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <div>
