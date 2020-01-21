@@ -53,7 +53,7 @@
         tutorial_title.classList.add('tutorial-title');
         tutorial_body.classList.add('tutorial-body');
         tutorial_block.setAttribute('id', depObj.id);
-        tutorial_block.setAttribute('level', depObj.id);//TODO replace with diff Level
+        tutorial_block.setAttribute('level', depObj.difficulty);//TODO replace with diff Level
 
         //assign content
         tutorial_body.innerHTML = depObj.content;
@@ -71,7 +71,7 @@
         let ref = {
             id : depObj.id,
             payload : tutorial_block,
-            level : depObj.id//TODO replace with diff Level
+            level : depObj.difficulty//TODO replace with diff Level
         }
 
         lookup.push(ref);
@@ -118,8 +118,8 @@
     function toggle_dependency(level){
 
         for (let elt of lookup){
-            console.log(elt.level + '<' + level);
-            if (level < elt.level){
+            console.log(elt.level + '>' + level);
+            if (level > elt.level){
                 elt.payload.hidden = true;
                 //console.log("Hide " + elt.id);
             } else {

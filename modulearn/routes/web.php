@@ -24,7 +24,7 @@ Route::resources([
 
 Route::get('/', function () {
     $user = Session::get('user');
-    $latest = Content::orderBy('id', 'desc')->take(5)->get();
+    $latest = Content::orderBy('id', 'desc')->take(7)->get();
     return View::make('home', ['user'=>$user, 'submissions' => $latest]);
 });
 

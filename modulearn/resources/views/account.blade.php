@@ -21,10 +21,10 @@
                     <div>
                         @foreach ($submitted as $item)
                         <div>
-                            <a href='/topics/{{$item->id}}/edit'>
-                                <div>{{$item->title}}</div>
-                            </a>
-                            <button>Edit</button>
+                            <button>
+                                <a href='/topics/{{$item->id}}/edit'>{{$item->title}}</a>
+                            </button>
+                            <!--<button>Edit</button>-->
                         </div>
                         @endforeach
                     </div>

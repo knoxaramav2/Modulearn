@@ -32,9 +32,11 @@
             <div class="collapsible">
                 
                 <div class="login">
+                    <!--
                     <div class="collapse-control">
                         <button>(>)</button>
                     </div>
+                -->
                     <h3>Login</h3>
                     <form method="post" action="/login?">
                         {{ csrf_field() }}
