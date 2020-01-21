@@ -23,7 +23,7 @@
                     </div>
                     <div class='btn-vlist'>
                         <br/>
-                        <div><span>Favorites</span></div>
+                        <div class='underlined'><span>Favorites</span></div>
                         {{--@foreach ($favoritesId as $fav)
                         <div>
                             <button >
@@ -36,7 +36,12 @@
                 <div class='container-right'>
                     <h2>Submissions</h2>
                     <div>
-                        <button class='btn-submit'>Make a Submission!</button>
+                        <nav class='horiz-nav-bar'>
+                            <div class='hover-react-color'><a href='/topics/create'>Create A Topic!</a></div>
+                        </nav>
+                        <!--<div class='btn-submit'><a href='/topics/create'>Create A Topic!</a></div>
+                        <a href='/topics/create'>Create A Topic!</a>
+                        <a class='btn-submit' a href='/topics/create'>Make a Submission!</a>-->
                     </div>
                     <div class='btn-vlist'>
                         @foreach ($submitted as $item)

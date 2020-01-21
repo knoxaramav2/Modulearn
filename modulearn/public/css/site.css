@@ -49,8 +49,8 @@ a{
 }
 
 .horiz-nav-bar div{
-    width: fit-content;
-    background-color: #00f3ff;
+    width: 100%;
+    background-color: green;
     border-radius: 10px;
     padding: 10px 20px;
     margin: 15px auto;
@@ -60,7 +60,7 @@ a{
     text-decoration: none;
     font-size: xx-large;
     font-weight: 900;
-
+    color: white;
 }
 
 /* Util */
@@ -236,6 +236,10 @@ table .element-td-dark{
     /*margin: 20px 0;*/
     padding: 5px;
     /*background-color: lightgray;*/
+}
+
+.underlined{
+    border-bottom: 2px solid lightgray;
 }
 
 /* Common */
