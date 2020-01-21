@@ -9,3 +9,7 @@ DB::table('table_name')->get()
 DB::select("select name from sqlite_master where type='table' order by name")
 #list schema
 Schema::getColumnListing('table_name')
+
+
+#launch server on localhost:8000
+php artisan serve

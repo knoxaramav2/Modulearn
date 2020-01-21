@@ -12,7 +12,5 @@
         <div class="err-bg">
             <span>This page cannot be found :/</span>
         </div>
-        
     </body>
-
 </html>

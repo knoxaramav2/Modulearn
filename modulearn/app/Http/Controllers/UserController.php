@@ -108,11 +108,12 @@ class UserController extends Controller
     public function accountView(){
 
         $user = Session::get('user');
-        $submitted = Content::where("owner_id", $user->id)->get();
 
         if(!isset($user)){
             return redirect('error/No active user session');
         }
+
+        $submitted = Content::where("owner_id", $user->id)->get();
 
         return view('account', ['user'=>$user, 'submitted' => $submitted]);
     }

@@ -4,6 +4,7 @@ namespace Modulearn\Http\Controllers;
 
 use Modulearn\User;
 use Modulearn\Content;
+use Modulearn\Favorite;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -107,14 +108,18 @@ class UserController extends Controller
 
     public function accountView(){
 
-        $user = Session::get('user');
-        $submitted = Content::where("owner_id", $user->id)->get();
+        $user = Session::get('user'); 
 
         if(!isset($user)){
             return redirect('error/No active user session');
         }
 
-        return view('account', ['user'=>$user, 'submitted' => $submitted]);
+        $submitted = Content::where("owner_id", $user->id)->get();
+        $favoritesId = Favorites::where("userId", $user->id)->get();
+
+        Log::Debug($favoritesId);
+
+        return view('account', ['user'=>$user, 'submitted' => $submitted, 'favoritesId' => $favoritesId]);
     }
 
     public function getList(Request $request){

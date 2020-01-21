@@ -219,7 +219,7 @@ class ContentController extends Controller
 
         if (!isset($tutorial)){
             return abort(404);
-        } 
+        }
 
         $tutorial->dependencies = $dependencies;
 

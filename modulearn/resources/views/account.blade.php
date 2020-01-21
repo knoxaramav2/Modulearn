@@ -24,13 +24,13 @@
                     <div class='btn-vlist'>
                         <br/>
                         <div><span>Favorites</span></div>
-                        @foreach ($submitted as $item)
+                        {{--@foreach ($favoritesId as $fav)
                         <div>
                             <button >
-                                <a href='/topics/{{$item->id}}/edit'>{{$item->title}}</a>
+                                <a href='/topics/{{$fav->id}}/edit'>{{$fav->title}}</a>
                             </button>
                         </div>
-                        @endforeach
+                        @endforeach--}}
                     </div>
                 </div>
                 <div class='container-right'>
