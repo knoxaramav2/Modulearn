@@ -7,13 +7,13 @@
 
         <title>Modulearn - {{$content->title}}</title>
     </head>
-    <body onload="load_next_dependency({{$content->dependencies}});">
+    <body onload="setup({{$content->dependencies}}, {{$content->difficulty}});">
         @include('partial/header')
 
         <div class='gadget-panel'>
             <div class='gadget-container gadget-right'>
-                <span>Content Adjuster</span>
-                <input type='range' min='1' max='10' value='7' oninput="update_slider(this.value);";>
+                <span id='adjuster-content'>Content Adjuster</span>
+                <input type='range' id='adjuster' min='1' max='10' value='7' oninput="update_slider(this.value);";>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             <div class='tutorial-block'>
                 <div class='tutorial-title'>
                     <span>ID : {{$content->id}}</span>
-                    <h1>{{$content->title}}</h1>
+                    <h1>{{$content->title}} ({{$content->difficulty}})</h1>
                 </div>
                 <div class='tutorial-body'>
                     @markdown($content->content)
@@ -34,9 +34,20 @@
 <script>
 
     var lookup = [];
+    var maxDiff = 0;
+    var adjuster;
+    var adjusterContent;
 
+    function setup(dependencies, initDiff){
+        adjuster=document.getElementById('adjuster');
+        adjusterContent=document.getElementById('adjuster-content');
+        maxDiff=initDiff;
+        loadDependencyAsync(dependencies);
+    }
 
     function appendDepContent(depObj){
+
+        maxDiff = depObj.difficulty > maxDiff? depObj.difficulty : maxDiff;
 
         //let depObj = JSON.parse(dep);
 
@@ -57,7 +68,7 @@
 
         //assign content
         tutorial_body.innerHTML = depObj.content;
-        title_span.innerHTML = depObj.title;
+        title_span.innerHTML = depObj.title + ' (' + depObj.difficulty + ')';
         id_span.innerHTML = "ID : " + depObj.id;
 
         //put together
@@ -75,12 +86,10 @@
         }
 
         lookup.push(ref);
-        console.log(ref);
+        //console.log(ref);
     }
 
-    function load_next_dependency(deps){
-        //console.log(deps);
-
+    function loadDependencyAsync(deps){
         deps.forEach(dep => {
             //console.log(dep.dependency_id);
             //console.log(dep.dependent_id);
@@ -95,7 +104,7 @@
                 if (this.readyState == 4 && this.status == 200){
                     let depObj = JSON.parse(Http.responseText);
                     
-                    console.log(depObj);
+                    //console.log(depObj);
 
                     appendDepContent(depObj);
 
@@ -104,8 +113,15 @@
                         //depQueue.push(depObj.dependencies);
                         //console.log(depQueue);
 
-                        load_next_dependency(depObj.dependencies);
+                        loadDependencyAsync(depObj.dependencies);
                     }
+
+                    //Update slider values
+                    adjuster.max=maxDiff;
+                    adjuster.value=maxDiff;
+                    adjusterContent.innerHTML = "Difficulty Adjuster ("+adjuster.value+")";
+
+                    console.log('#' + maxDiff);
                 }                
             }
         });
@@ -113,13 +129,16 @@
 
     function update_slider(level){
         toggle_dependency(level);
+        adjusterContent.innerHTML = "Difficulty Adjuster ("+adjuster.value+")";
+        console.log('>> '+adjuster.value);
+        console.log('<<' +adjuster.max);
     }
 
     function toggle_dependency(level){
 
         for (let elt of lookup){
-            console.log(elt.level + '>' + level);
-            if (level > elt.level){
+            //console.log(elt.level + '>' + level);
+            if (level < elt.level){
                 elt.payload.hidden = true;
                 //console.log("Hide " + elt.id);
             } else {
