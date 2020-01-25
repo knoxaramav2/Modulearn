@@ -65,6 +65,18 @@ a{
 
 /* Util */
 
+#fav{
+    color:cyan;
+}
+
+#fav:not('favorite'){
+    color:green;
+}
+
+#fav:is('favorite'){
+    color:red;
+}
+
 .collapsible{
     width:100%;
 }

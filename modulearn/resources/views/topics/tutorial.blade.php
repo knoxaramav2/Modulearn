@@ -14,6 +14,7 @@
             <div class='gadget-container gadget-right'>
                 <span id='adjuster-content'>Content Adjuster</span>
                 <input type='range' id='adjuster' min='1' max='10' value='7' oninput="update_slider(this.value);";>
+                <i onclick='toggleFavorite(this, {{$content->id}})' class='favorite-neg' id='fav'> </i>
             </div>
         </div>
 
@@ -38,6 +39,10 @@
     var adjuster;
     var adjusterContent;
 
+    function toggleFavorite(obj, id){
+        obj.classList.toggle('favorite');
+    }
+
     function setup(dependencies, initDiff){
         adjuster=document.getElementById('adjuster');
         adjusterContent=document.getElementById('adjuster-content');
@@ -56,8 +61,6 @@
     function appendDepContent(depObj){
 
         maxDiff = depObj.difficulty > maxDiff? depObj.difficulty : maxDiff;
-
-        //let depObj = JSON.parse(dep);
 
         //generate tutorial block divs
         let tutorial_space = document.getElementById('tutorial-space');
@@ -94,7 +97,6 @@
         }
 
         lookup.push(ref);
-        //console.log(ref);
     }
 
     function loadDependencyAsync(deps){
@@ -125,20 +127,15 @@
     function update_slider(level){
         toggle_dependency(level);
         adjusterContent.innerHTML = "Difficulty Adjuster ("+adjuster.value+")";
-        console.log('>> '+adjuster.value);
-        console.log('<<' +adjuster.max);
     }
 
     function toggle_dependency(level){
 
         for (let elt of lookup){
-            //console.log(elt.level + '>' + level);
             if (level < elt.level){
                 elt.payload.hidden = true;
-                //console.log("Hide " + elt.id);
             } else {
                 elt.payload.hidden = false;
-                //console.log("Show " + elt.id);
             }
         }
     }
