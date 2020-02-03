@@ -66,15 +66,14 @@ a{
 /* Util */
 
 #fav{
-    color:cyan;
+    border:none;
+    filter:saturate(4);
+    outline:0;
+    background:none;
 }
 
-#fav:not('favorite'){
-    color:green;
-}
-
-#fav:is('favorite'){
-    color:red;
+#fav.favorite-neg img{
+    filter:saturate(0);
 }
 
 .collapsible{

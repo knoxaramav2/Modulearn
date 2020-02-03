@@ -14,7 +14,9 @@
             <div class='gadget-container gadget-right'>
                 <span id='adjuster-content'>Content Adjuster</span>
                 <input type='range' id='adjuster' min='1' max='10' value='7' oninput="update_slider(this.value);";>
-                <i onclick='toggleFavorite(this, {{$content->id}})' class='favorite-neg' id='fav'> </i>
+                <button onclick='toggleFavorite(this, {{$content->id}})' class='favorite-neg' id='fav'>
+                    <img src="{{asset('images/star.png')}}" alt="Placeholder" height="16" width="16">
+                </button>
             </div>
         </div>
 
@@ -40,7 +42,7 @@
     var adjusterContent;
 
     function toggleFavorite(obj, id){
-        obj.classList.toggle('favorite');
+        obj.classList.toggle('favorite-neg');
     }
 
     function setup(dependencies, initDiff){
