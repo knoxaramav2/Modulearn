@@ -233,11 +233,17 @@ class ContentController extends Controller
 
     public function toggleFavorite($tutorialId){
 
+        $user = Session::get('user');
+
+        if(!isset($user)){
+            return redirect('error/No active user session');
+        }
+
         $fav = self::getFavorited($tutorialId);
 
         if(!isset($fav)){
             $entry = new Favorite();
-            $entry->userId = $userId;
+            $entry->userId = $user->id;
             $entry->tutorialId = $tutorialId;
             $entry->save();
         } else {

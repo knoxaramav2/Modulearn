@@ -42,11 +42,7 @@
     var adjusterContent;
 
     function getFavoriteState(){
-        //let Http = new XMLHttpRequest();
-        //console.log("{{$content->id}}");
-        //Http.open("GET", "/topics/isFavorited/"+"{{$content->id}}");
-        //Http.send();
-
+        
         let Http = new XMLHttpRequest();
             Http.open("GET", "/topics/is_favorited/"+"{{$content->id}}");
             Http.send();
@@ -54,12 +50,9 @@
             Http.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200){
                     let result = JSON.parse(Http.responseText);
-                    console.log("###")
-                    console.log(result);
                     setFavorite(result);
                 }                
             }
-        
     }
 
     function setFavorite(state){
@@ -74,6 +67,12 @@
     }
 
     function toggleFavorite(obj, id){
+
+        let Http = new XMLHttpRequest();
+        console.log("{{$content->id}}");
+        Http.open("GET", "/topics/toggle_favorited/"+"{{$content->id}}");
+        Http.send();
+
         obj.classList.toggle('favorite-neg');
     }
 
