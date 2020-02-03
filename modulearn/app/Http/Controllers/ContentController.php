@@ -4,6 +4,7 @@ namespace Modulearn\Http\Controllers;
 
 use Modulearn\Content;
 use Modulearn\Dependency;
+use Modulearn\Favorite;
 
 use Illuminate\Http\Request;
 use Session;
@@ -210,12 +211,12 @@ class ContentController extends Controller
         //
     }
 
-    /* API */
+    /* API - Not intended for the API Route middleware*/
 
-    public function getTutorial($id, $raw_md=false){
+    public function getTutorial($tutorialId, $raw_md=false){
 
-        $tutorial = Content::where('id', $id)->first();
-        $dependencies = Dependency::where('dependent_id', $id)->get();
+        $tutorial = Content::where('id', $tutorialId)->first();
+        $dependencies = Dependency::where('dependent_id', $tutorialId)->get();
 
         if (!isset($tutorial)){
             return abort(404);
@@ -229,4 +230,38 @@ class ContentController extends Controller
 
         return $tutorial;
     }
+
+    public function toggleFavorite($tutorialId){
+
+        $fav = self::getFavorited($tutorialId);
+
+        if(!isset($fav)){
+            $entry = new Favorite();
+            $entry->userId = $userId;
+            $entry->tutorialId = $tutorialId;
+            $entry->save();
+        } else {
+            $fav->delete();
+        }
+    }
+
+    public function isFavorited($tutorialId){
+        Log::info("Hit isfavorited");
+        $fav = self::getFavorited($tutorialId);
+        return var_export(isset($fav));
+    }
+
+    public function getFavorited($tutorialId){
+        $user = Session::get('user');
+
+        if(!isset($user)){
+            return redirect('error/No active user session');
+        }
+
+        $fav = Favorite::where('userId', $user->id)
+            ->where('tutorialId', $tutorialId)->first();
+        
+        return $fav;
+    }
+
 }

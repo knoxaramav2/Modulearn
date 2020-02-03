@@ -14,7 +14,7 @@
             <div class='gadget-container gadget-right'>
                 <span id='adjuster-content'>Content Adjuster</span>
                 <input type='range' id='adjuster' min='1' max='10' value='7' oninput="update_slider(this.value);";>
-                <button onclick='toggleFavorite(this, {{$content->id}})' class='favorite-neg' id='fav'>
+                <button onclick='toggleFavorite(this, {{$content->id}})' class='favorite-neg' id='fav' title='Favorite'>
                     <img src="{{asset('images/star.png')}}" alt="Placeholder" height="16" width="16">
                 </button>
             </div>
@@ -41,6 +41,38 @@
     var adjuster;
     var adjusterContent;
 
+    function getFavoriteState(){
+        //let Http = new XMLHttpRequest();
+        //console.log("{{$content->id}}");
+        //Http.open("GET", "/topics/isFavorited/"+"{{$content->id}}");
+        //Http.send();
+
+        let Http = new XMLHttpRequest();
+            Http.open("GET", "/topics/is_favorited/"+"{{$content->id}}");
+            Http.send();
+
+            Http.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    let result = JSON.parse(Http.responseText);
+                    console.log("###")
+                    console.log(result);
+                    setFavorite(result);
+                }                
+            }
+        
+    }
+
+    function setFavorite(state){
+        
+        let favBtn = document.getElementById('fav');
+        
+        if (state){
+            favBtn.classList.remove('favorite-neg');
+        } else {
+            favBtn.classList.add('favorite-neg');
+        }
+    }
+
     function toggleFavorite(obj, id){
         obj.classList.toggle('favorite-neg');
     }
@@ -52,6 +84,7 @@
 
         adjustSlider();
         loadDependencyAsync(dependencies);
+        getFavoriteState();
     }
 
     function adjustSlider(){
@@ -103,7 +136,7 @@
 
     function loadDependencyAsync(deps){
         deps.forEach(dep => {
-            Http = new XMLHttpRequest();
+            let Http = new XMLHttpRequest();
             Http.open("GET", "/api/topics/get_tutorial/"+dep.dependency_id);
             Http.send();
 

@@ -55,6 +55,7 @@ Route::get('/manage/terminal', 'ManageController@terminal');
 Route::get('/manage/topics', 'ManageController@topicsManage');
 
 //Content
+Route::get('/topics/is_favorited/{tutorialId}', 'ContentController@isFavorited');
 
 //other
 Route::get('/about', function(){
