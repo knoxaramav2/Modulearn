@@ -252,7 +252,6 @@ class ContentController extends Controller
     }
 
     public function isFavorited($tutorialId){
-        Log::info("Hit isfavorited");
         $fav = self::getFavorited($tutorialId);
         return var_export(isset($fav));
     }
@@ -268,6 +267,16 @@ class ContentController extends Controller
             ->where('tutorialId', $tutorialId)->first();
         
         return $fav;
+    }
+
+    public function getFavorites(){
+        $user = Session::get('user');
+
+        if(!isset($user)){
+            return redirect('error/No active user session');
+        }
+
+        //TODO implement
     }
 
 }

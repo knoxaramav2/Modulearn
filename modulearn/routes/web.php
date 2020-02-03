@@ -57,6 +57,7 @@ Route::get('/manage/topics', 'ManageController@topicsManage');
 //Content
 Route::get('/topics/is_favorited/{tutorialId}', 'ContentController@isFavorited');
 Route::get('/topics/toggle_favorited/{tutorialId}', 'ContentController@toggleFavorite');
+Route::get('/topics/get_favorites', 'ContentController@getFavorites');
 
 //other
 Route::get('/about', function(){

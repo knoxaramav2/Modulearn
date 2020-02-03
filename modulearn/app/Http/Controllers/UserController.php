@@ -109,13 +109,15 @@ class UserController extends Controller
     public function accountView(){
 
         $user = Session::get('user');
-        $favorites = Favorite::get();
-
-        Log::info($favorites);
 
         if(!isset($user)){
             return redirect('error/No active user session');
         }
+        
+        $favorites = DB::table('favorites')
+            ->join('contents', 'favorites.tutorialId','=','contents.id')
+            ->select('title', 'tutorialId')
+            ->get();
 
         $submitted = Content::where("owner_id", $user->id)->get();
 

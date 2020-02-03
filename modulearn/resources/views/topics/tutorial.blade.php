@@ -73,7 +73,8 @@
         Http.open("GET", "/topics/toggle_favorited/"+"{{$content->id}}");
         Http.send();
 
-        obj.classList.toggle('favorite-neg');
+        //obj.classList.toggle('favorite-neg');
+        getFavoriteState();
     }
 
     function setup(dependencies, initDiff){

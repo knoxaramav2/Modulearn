@@ -26,8 +26,8 @@
                         <div class='underlined'><span>Favorites</span></div>
                         @foreach ($favorites as $fav)
                         <div>
-                            <button >
-                                <a href='/topics/{{$fav->id}}/edit'>{{$fav->title}}</a>
+                            <button>
+                                <a href='/topics/{{$fav->tutorialId}}'>{{$fav->title}}</a>
                             </button>
                         </div>
                         @endforeach
