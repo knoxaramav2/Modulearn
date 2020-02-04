@@ -14,9 +14,11 @@
             <div class='gadget-container gadget-right'>
                 <span id='adjuster-content'>Content Adjuster</span>
                 <input type='range' id='adjuster' min='1' max='10' value='7' oninput="update_slider(this.value);";>
+                @if(isset($user))
                 <button onclick='toggleFavorite(this, {{$content->id}})' class='favorite-neg' id='fav' title='Favorite'>
                     <img src="{{asset('images/star.png')}}" alt="Placeholder" height="16" width="16">
                 </button>
+                @endif
             </div>
         </div>
 

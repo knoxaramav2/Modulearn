@@ -213,23 +213,7 @@ class ContentController extends Controller
 
     /* API - Not intended for the API Route middleware*/
 
-    public function getTutorial($tutorialId, $raw_md=false){
-
-        $tutorial = Content::where('id', $tutorialId)->first();
-        $dependencies = Dependency::where('dependent_id', $tutorialId)->get();
-
-        if (!isset($tutorial)){
-            return abort(404);
-        }
-
-        $tutorial->dependencies = $dependencies;
-
-        if(isset($raw_md) && $raw_md == false){
-            $tutorial->content = Markdown::parse($tutorial->content);
-        }
-
-        return $tutorial;
-    }
+    
 
     public function toggleFavorite($tutorialId){
 
@@ -279,4 +263,36 @@ class ContentController extends Controller
         //TODO implement
     }
 
+    public function setTags($tutorialId, $tagString){
+
+    }
+
+    /* For API middleware */
+    public function getTutorial($tutorialId, $raw_md=false){
+
+        $tutorial = Content::where('id', $tutorialId)->first();
+        $dependencies = Dependency::where('dependent_id', $tutorialId)->get();
+
+        if (!isset($tutorial)){
+            return abort(404);
+        }
+
+        $tutorial->dependencies = $dependencies;
+
+        if(isset($raw_md) && $raw_md == false){
+            $tutorial->content = Markdown::parse($tutorial->content);
+        }
+
+        return $tutorial;
+    }
+
+    public function getTags($tutorialId){
+        $tutorial = Content::where('id', $tutorialId);
+
+        if(!isset($tutorial)){
+            redirect('error/No such content');
+        }
+
+        //TODO implement   
+    }
 }

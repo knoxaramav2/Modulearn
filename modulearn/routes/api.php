@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/user/getList', "UserController@getList");
 
 Route::get('/topics/get_tutorial/{id}/{raw_md?}', "ContentController@getTutorial");
+Route::get('/topics/get_tags/{id}',"ContentController@getTags");
