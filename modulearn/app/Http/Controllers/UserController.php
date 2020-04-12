@@ -180,4 +180,13 @@ class UserController extends Controller
         Log::info($page);
         return $pager;
     }
+
+    //User profile images
+    function getProfileImage($username, $dim){
+
+    }
+
+    function setProfileImages($username, $dim){
+
+    }
 }
