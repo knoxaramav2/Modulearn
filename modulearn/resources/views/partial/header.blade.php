@@ -24,7 +24,7 @@
 
         <div id="header-logo">
             <a href="/">
-                <img src="{{asset('images/logo_128.png')}}" alt="Logo" height="32" width="32">
+                <img src="{{asset('images/logo2.png')}}" alt="Logo" height="32" width="64">
             </a>
         </div>
 

@@ -65,6 +65,10 @@ a{
 
 /* Util */
 
+#tag-box{
+    height:95%;
+}
+
 #fav{
     border:none;
     filter:saturate(4);
@@ -269,7 +273,7 @@ table .element-td-dark{
 
 #header-logo{
     display: inline-flex;
-    margin-left: 20%;
+    margin-left: 10%;
 }
 
 #header-logo a{

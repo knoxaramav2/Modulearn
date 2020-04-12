@@ -51,6 +51,22 @@
                         <div id='dependency-list'>
                         </div>
                     </div>
+                    <div id='tag-container'>
+                        <div>
+                            <h3>Add tags</h3>
+                        </div>
+                        <div id='tag-list'>
+                            @foreach ($tags as $tag)
+                            <span class='search-tag'>{{$tag->title}}</span>   
+                            @endforeach
+                        </div>
+                        <div>
+                            <input type='textbox' id='tag-box' >
+                            <button>
+                                <img src='/icons/add-content.ico'>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,6 +77,10 @@
     var difficulty = 1;
     var diffSlider;
     var diffDisplay;
+
+    function tagVisualUpdate(tagField){
+
+    }
 
     function getMdEditor(){
         return simplemde;
@@ -73,7 +93,10 @@
 
     function prepareSubmitData(){
         let md = document.getElementById("input-markdown");
+        let tags = document.getElementById('tag-box');
+
         md.value = simplemde.value();
+
 
         let deps = document.getElementsByClassName('dependency-item');
         let form = document.getElementById('tutorial-form');

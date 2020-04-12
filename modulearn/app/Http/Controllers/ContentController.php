@@ -5,11 +5,14 @@ namespace Modulearn\Http\Controllers;
 use Modulearn\Content;
 use Modulearn\Dependency;
 use Modulearn\Favorite;
+use Modulearn\Tag;
+use Modulearn\TagJoint;
 
 use Illuminate\Http\Request;
 use Session;
 use Log;
 use Auth;
+use DB;
 use Markdown;
 
 class ContentController extends Controller
@@ -139,13 +142,19 @@ class ContentController extends Controller
         }
 
         $content = $this->getTutorial($id);
+        $tags = TagJoint::where('post_id', $content->id)->get();
+
+        $tagTitles = DB::table('tags')
+            ->join('tag_joints', 'tags.id','=','tag_joints.tag_id')
+            ->select('title')
+            ->get();
 
         if(!isset($content)){
             return view('errors/404');
         }
 
         return view('topics/edit')
-            ->with(['user'=>$user, 'content' => $content, 'alt_action' => 'PUT']);
+            ->with(['user'=>$user, 'content' => $content, 'alt_action' => 'PUT', 'tags' => $tagTitles]);
     }
 
     /**
